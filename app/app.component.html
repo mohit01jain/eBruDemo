@@ -1,0 +1,299 @@
+ <ion-app>
+     <div *ngIf="showSplash" class="splash">
+         <div class="spinner"></div>
+     </div>
+
+
+      <ion-menu type="overlay">
+      <ion-header>
+        <ion-toolbar class="new-background-color">
+            <ion-row><ion-col class="menuHeader" col-4>
+            <ion-avatar item-start  >
+                 <img class="imageSignUp" src="assets/imgs/ic_sign_in.png">
+
+            </ion-avatar>
+            </ion-col>
+            <ion-col class="menuHeader" col-8>
+                <span class="span_name">{{userName}}</span><br>
+                <span class="spanContent">{{userEmail}}</span><br>
+                <span class="spanContent">{{userMobile}}</span>
+            </ion-col>
+
+            </ion-row>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false"> <!--  *ngFor="let p of appPages"-->
+           <!-- <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>-->
+
+              <ion-item    (click)="openHome()"  >
+                <img slot="start" class="iconCls" src="assets/imgs/ic_home.png"/>
+                       <ion-label>
+                        Home
+                       </ion-label>
+                     </ion-item>
+              <ion-item   (click)="openOrderList()" >
+            <img slot="start" class="iconCls" src="assets/imgs/ic_pending_orders.png"/>
+                  <ion-label>
+                      Order Details
+                  </ion-label>
+              </ion-item>
+
+              <ion-item   (click)="openInvite()">
+      <img slot="start" class="iconCls" src="assets/imgs/ic_invite_friends.png"/>
+                  <ion-label >
+                      Invite Friends
+                  </ion-label>
+              </ion-item>
+              <ion-item  (click)="openProfile()"   >
+              <img slot="start" class="iconCls" src="assets/imgs/ic_profile.png"/>
+                  <ion-label  >
+                      Profile
+                  </ion-label>
+              </ion-item>
+              <ion-item  (click)="openContactUs()"   >
+              <img slot="start" class="iconCls" src="assets/imgs/ic_contact_us.png"/>
+                  <ion-label>
+                      Contact Us
+                  </ion-label>
+              </ion-item>
+              <ion-item   (click)=" openCart()"  >
+          <img slot="start" class="iconCls" src="assets/imgs/ic_cart_orange.png"/>
+                  <ion-label>
+                      Cart Items
+                  </ion-label>
+              </ion-item>
+
+
+
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+        <ion-footer class="new-background-color" >
+            <ion-list>
+
+
+                <ion-item class="footer_item" (click)="presentConfirm('Logout','Do you want to Quit ?')" >
+                    <img slot="start" class="iconCls" src="assets/imgs/ic_logout.png"/>
+                    <ion-label  class="logoutTxt">
+                        Logout
+                    </ion-label>
+                </ion-item>
+                <ion-item>
+                    <ion-row class="footer_row">
+                        <ion-col >Powered by Natural Softwares Pvt. Ltd.</ion-col>
+                    </ion-row>
+                </ion-item>
+
+            </ion-list>
+        </ion-footer>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+
+    <!-- <ion-menu  [content]="content">
+         <ion-header class="header">
+             <ion-row>
+                 <ion-avatar item-start style="margin: -10px 8px -9px -12px">
+                     &lt;!&ndash;<ion-col col-4><img class="imageSignUp" src="{{base64Image}}"/></ion-col>&ndash;&gt;
+                     <ion-col col-4><img class="imageSignUp" src="assets/imgs/ic_sign_in.png">
+                     </ion-col>
+                 </ion-avatar>
+                 &lt;!&ndash;<ion-col col-4>&ndash;&gt;
+                 &lt;!&ndash;<img class="imageSignUp" src="{{base64Image}}">&ndash;&gt;
+                 &lt;!&ndash;</ion-col>&ndash;&gt;
+                 <ion-col col-8 class="profilDeatils" >
+                     <h6 class="span_name" style="margin-top:0.5rem;margin-bottom: 0.5rem;">{{userName}}</h6>
+                     <span class="spanContent">{{userEmail}}</span><br>
+                     <span class="spanContent">{{userMobile}}</span>
+                 </ion-col>
+             </ion-row>
+
+         </ion-header>
+
+         <ion-content>
+             <ion-list>
+                 &lt;!&ndash;<button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">&ndash;&gt;
+                 &lt;!&ndash;{{p.title}}&ndash;&gt;
+                 &lt;!&ndash;</button>&ndash;&gt;
+
+                 <ion-item (click)="openHome()" *ngIf="userType == 5">
+                     <ion-avatar item-start style="margin: -10px 8px -9px -12px">
+                         <ion-col col-2><img src="assets/imgs/ic_home.png"/></ion-col>
+                     </ion-avatar>
+                     <h2>Home</h2>
+                 </ion-item>
+                 <ion-item (click)="openAdmin()" *ngIf="userType == 2">
+                     <ion-avatar item-start style="margin: -10px 8px -9px -12px">
+                         <ion-col col-2><img src="assets/imgs/ic_profile.png"/></ion-col>
+                     </ion-avatar>
+                     <h2>Admin Dashboard</h2>
+                 </ion-item>
+                 <ion-item (click)="openOrderList()">
+                     <ion-avatar item-start style="margin: -10px 8px -9px -12px">
+                         <ion-col col-2><img src="assets/imgs/ic_pending_orders.png"/></ion-col>
+                     </ion-avatar>
+                     <h2>Order Details</h2>
+                 </ion-item>
+
+                 &lt;!&ndash;<ion-item>&ndash;&gt;
+                 &lt;!&ndash;&lt;!&ndash;<ion-item  (click)="openTranstionHistory()">&ndash;&gt;&ndash;&gt;
+                 &lt;!&ndash;<ion-avatar item-start style="margin: -10px 8px -9px -12px">&ndash;&gt;
+                 &lt;!&ndash;<ion-col col-2><img src="assets/imgs/ic_transaction_history.png"/></ion-col>&ndash;&gt;
+                 &lt;!&ndash;</ion-avatar>&ndash;&gt;
+                 &lt;!&ndash;<h2>Transaction History</h2>&ndash;&gt;
+                 &lt;!&ndash;</ion-item>&ndash;&gt;
+                 <ion-item (click)="openInvite()">
+                     <ion-avatar item-start style="margin: -10px 8px -9px -12px">
+                         <ion-col col-2><img src="assets/imgs/ic_invite_friends.png"/></ion-col>
+                     </ion-avatar>
+                     <h2>Invite Friends</h2>
+                 </ion-item>
+                 <ion-item (click)="openProfile()">
+                     <ion-avatar item-start style="margin: -10px 8px -9px -12px">
+                         <ion-col col-2><img src="assets/imgs/ic_profile.png"/></ion-col>
+                     </ion-avatar>
+                     <h2>Profile</h2>
+                 </ion-item>
+
+
+                 &lt;!&ndash;<ion-item (click)="openInvoiceDetail()">&ndash;&gt;
+                 &lt;!&ndash;<ion-avatar item-start style="margin: -10px 8px -9px -12px">&ndash;&gt;
+                 &lt;!&ndash;<ion-col col-2><img src="assets/imgs/ic_profile.png"/></ion-col>&ndash;&gt;
+                 &lt;!&ndash;</ion-avatar>&ndash;&gt;
+                 &lt;!&ndash;<h2>Invoice Detail</h2>&ndash;&gt;
+                 &lt;!&ndash;</ion-item>&ndash;&gt;
+
+                 &lt;!&ndash;<ion-item (click)="openDeliveryDetail()">&ndash;&gt;
+                 &lt;!&ndash;<ion-avatar item-start style="margin: -10px 8px -9px -12px">&ndash;&gt;
+                 &lt;!&ndash;<ion-col col-2><img src="assets/imgs/ic_profile.png"/></ion-col>&ndash;&gt;
+                 &lt;!&ndash;</ion-avatar>&ndash;&gt;
+                 &lt;!&ndash;<h2>Delivery Address</h2>&ndash;&gt;
+                 &lt;!&ndash;</ion-item>&ndash;&gt;
+
+
+                 &lt;!&ndash;<ion-item (click)="openLedgerReport()" *ngIf="userType == 2">
+                     <ion-avatar item-start style="margin: -10px 8px -9px -12px">
+                         <ion-col col-2><img src="assets/imgs/ic_profile.png"/></ion-col>
+                     </ion-avatar>
+                     <h2>Ledger Report</h2>
+                 </ion-item>&ndash;&gt;
+
+                 <ion-item (click)="openReceivable()" *ngIf="userType == 2">
+                     <ion-avatar item-start style="margin: -10px 8px -9px -12px">
+                         <ion-col col-2><img src="assets/imgs/ic_profile.png"/></ion-col>
+                     </ion-avatar>
+                     <h2>Receivable</h2>
+                 </ion-item>
+
+                 <ion-item (click)="openContactUs()" *ngIf="userType == 5">
+                     <ion-avatar item-start style="margin: -10px 8px -9px -12px">
+                         <ion-col col-2><img src="assets/imgs/ic_contact_us.png"/></ion-col>
+                     </ion-avatar>
+                     <h2>Contact Us</h2>
+                 </ion-item>
+
+                &lt;!&ndash; <ion-item (click)="openPrint()" *ngIf="userType == 2">
+                     <ion-avatar item-start style="margin: -10px 8px -9px -12px">
+                         <ion-col col-2><img src="assets/imgs/ic_contact_us.png"/></ion-col>
+                     </ion-avatar>
+                     <h2>Print</h2>
+                 </ion-item>&ndash;&gt;
+                 &lt;!&ndash;<ion-item (click)="openDeliverySlot()" *ngIf="userType == 5">&ndash;&gt;
+                 &lt;!&ndash;<ion-avatar item-start style="margin: -10px 8px -9px -12px">&ndash;&gt;
+                 &lt;!&ndash;<ion-col col-2><img src="assets/imgs/ic_contact_us.png"/></ion-col>&ndash;&gt;
+                 &lt;!&ndash;</ion-avatar>&ndash;&gt;
+                 &lt;!&ndash;<h2>Delivery Time Slots</h2>&ndash;&gt;
+                 &lt;!&ndash;</ion-item>&ndash;&gt;
+
+                 &lt;!&ndash;      <ion-item (click)="makePayment()">&ndash;&gt;
+                 &lt;!&ndash;      <ion-avatar item-start style="margin: -10px 8px -9px -12px">&ndash;&gt;
+                 &lt;!&ndash;      <ion-col col-2><img src="assets/imgs/ic_profile.png"/></ion-col>&ndash;&gt;
+                 &lt;!&ndash;      </ion-avatar>&ndash;&gt;
+
+                 &lt;!&ndash;      <h2>Make Payment</h2>&ndash;&gt;
+                 &lt;!&ndash;      </ion-item>&ndash;&gt;
+
+                 &lt;!&ndash;<ion-item (click)="openMap()">&ndash;&gt;
+                 &lt;!&ndash;<ion-avatar item-start style="margin: -10px 8px -9px -12px">&ndash;&gt;
+                 &lt;!&ndash;<ion-col col-2><img src="assets/imgs/ic_profile.png"/></ion-col>&ndash;&gt;
+                 &lt;!&ndash;</ion-avatar>&ndash;&gt;
+                 &lt;!&ndash;<h2>Map</h2>&ndash;&gt;
+                 &lt;!&ndash;</ion-item>&ndash;&gt;
+
+                 &lt;!&ndash;<ion-item (click)="openContact()">&ndash;&gt;
+                 &lt;!&ndash;<ion-avatar item-start style="margin: -10px 8px -9px -12px">&ndash;&gt;
+                 &lt;!&ndash;<ion-col col-2><img src="assets/imgs/ic_contact_us_2.png"/></ion-col>&ndash;&gt;
+                 &lt;!&ndash;</ion-avatar>&ndash;&gt;
+                 &lt;!&ndash;<h2>Contact Us</h2>&ndash;&gt;
+                 &lt;!&ndash;</ion-item>&ndash;&gt;
+                 &lt;!&ndash;<ion-item>&ndash;&gt;
+                 &lt;!&ndash;<ion-avatar item-start style="margin: -10px 8px -9px -12px">&ndash;&gt;
+                 &lt;!&ndash;<ion-col col-2><img src="assets/imgs/ic_contact_us.png"/></ion-col>&ndash;&gt;
+                 &lt;!&ndash;</ion-avatar>&ndash;&gt;
+                 &lt;!&ndash;<h2> FAQ's</h2>&ndash;&gt;
+
+                 &lt;!&ndash;</ion-item>&ndash;&gt;
+                 &lt;!&ndash;<ion-item (click)="openAbout()">&ndash;&gt;
+                 &lt;!&ndash;<ion-avatar item-start style="margin: -10px 8px -9px -12px">&ndash;&gt;
+                 &lt;!&ndash;<ion-col col-2><img src="assets/imgs/ic_tandc.png"/></ion-col>&ndash;&gt;
+                 &lt;!&ndash;</ion-avatar>&ndash;&gt;
+                 &lt;!&ndash;<h2>About Us</h2>&ndash;&gt;
+
+                 &lt;!&ndash;</ion-item>&ndash;&gt;
+                 <ion-item (click)="openCart()" *ngIf="userType == 5">
+
+                     <ion-avatar item-start style="margin: -10px 8px -9px -12px">
+                         <ion-col col-2><img src="assets/imgs/ic_cart_orange.png"/></ion-col>
+                     </ion-avatar>
+                     <h2>{{itemCount}} items in cart</h2>
+
+                     <ion-note item-end>
+                         &#8377; {{totalAmount | number}}
+                     </ion-note>
+                 </ion-item>
+
+                 <ion-item>
+                     <ion-avatar item-start style="margin: -8px 8px -9px -12px">
+                         <ion-col col-2><img src="assets/imgs/googleplay.png"/></ion-col>
+                     </ion-avatar>
+                     <h2>App Version </h2>
+
+                     <ion-note item-end>
+                         {{appVersionNumber}}
+                     </ion-note>
+                 </ion-item>
+             </ion-list>
+         </ion-content>
+
+         <ion-footer style="height: 15%">
+             <ion-list>
+                 <ion-item class="footer_item" (click)="presentConfirm('Logout','Do you want to Quit ?')">
+                     <ion-avatar item-start style="margin: -10px 8px -9px -12px">
+                         <ion-col col-2><img src="assets/imgs/ic_logout.png"/></ion-col>
+                     </ion-avatar>
+                     <h2  class="logoutTxt">Logout</h2>
+                 </ion-item>
+                 <ion-item>
+                     <ion-row class="footer_row">
+                         <ion-col align="center">Powered by Natural Softwares Pvt. Ltd.</ion-col>
+                     </ion-row>
+                 </ion-item>
+
+             </ion-list>
+         </ion-footer>
+
+     </ion-menu>
+
+     &lt;!&ndash; Disable swipe-to-go-back because it's poor UX to combine STGB with side menus &ndash;&gt;
+
+     <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>-->
+
+
+
+ </ion-app>

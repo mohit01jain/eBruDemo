@@ -1,0 +1,177 @@
+<ion-app>
+  <!--<ion-header>
+
+
+    <ion-toolbar color="secondary" class="iontoolbar">
+
+
+      <ion-buttons slot="start">
+
+        <ion-back-button class="ionbackbutton" defaultHref="HomepagePage"></ion-back-button>
+
+
+      </ion-buttons>
+
+      <ion-title class="headclass" style="font-size: small">BHIKARAM UDYOG</ion-title>
+
+
+      &lt;!&ndash; <ion-buttons slot="end">
+           <ion-button>
+               <ion-icon slot="icon-only"  class="headericon">
+               </ion-icon>
+               <p *ngIf="totalAmount > 0">{{totalAmount |  currency:'INR':true:'1.0'}}</p>
+           </ion-button>
+       </ion-buttons>&ndash;&gt;
+
+      <ion-buttons slot="primary">
+        <ion-button>
+          <ion-icon slot="icon-only" (click)="gotoCartPage()" class="iconclass">
+          </ion-icon>
+          <img src="assets/imgs/ic_cart_white.png" class="imageicon">
+          &lt;!&ndash;
+                          <p *ngIf="itemCount > 0" class="OrderItemCount">{{itemCount}}</p>
+          &ndash;&gt;
+        </ion-button>
+      </ion-buttons>
+
+    </ion-toolbar>
+
+    <ion-row class="rowclass">
+      <ion-col [style.col]="spinner == false ? 'col-11' : 'col-12'">
+        <ion-searchbar class="ionsearchbar"
+                       (ionInput)="getItems($event)" animated="true" placeholder="Search Items" autocomplete="on"
+                       (click)="openSearchPage()">
+        </ion-searchbar>
+      </ion-col>
+      <ion-spinner *ngIf="spinner == true" class="spiner" name="ios"></ion-spinner>
+    </ion-row>
+
+  </ion-header>-->
+
+  <ion-header class="new-background-color">
+    <ion-toolbar color="secondary">
+      <ion-buttons slot="start" >
+        <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+      <ion-title class="headName"><b>{{companyName}}</b></ion-title>
+
+      <ion-buttons slot="primary">
+        <ion-button  >
+          <p *ngIf="totalAmount > 0"> <b>{{totalAmount | currency:'INR':true:'1.0'}}</b></p>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="primary">
+        <ion-button   (click)="gotoCartPage()" >
+          <ion-icon name="cart"></ion-icon>
+          <ion-badge *ngIf="itemCount > 0" slot="end" class="itemCountCart">{{itemCount}}</ion-badge>
+        </ion-button>
+      </ion-buttons>
+
+    </ion-toolbar>
+    <ion-row class="rowclass" [ngStyle]="{'background-color':'#ED3237'}" >
+      <ion-col class="colPadding" [style.col]="spinner == false ? 'col-11' : 'col-12'" >
+        <ion-searchbar
+                (ionInput)="getItems($event)" animated="true"   autocomplete="on" (click)="openSearchPage()">
+        </ion-searchbar>
+      </ion-col>
+      <ion-spinner *ngIf="spinner == true"   name="ios"></ion-spinner>
+    </ion-row>
+
+  </ion-header>
+<ion-content>
+
+ <!-- <ion-row style="height: 70%;width: 90%;margin-left: 5%;">
+
+    <ion-col col-12 size="12" class="item_image" >
+      <ion-slides pager >
+        <ion-slide *ngFor="let data of imageList; let i = index">
+          <img *ngIf="data.ImageUrl != ''" src="https://api.tabserp.com/{{data.ImageUrl}}" class="sliderImage">
+          <img  *ngIf="data.ImageUrl == ''"  src="src/assets/imgs/imageNotFound.jpg" class="sliderImage">
+        </ion-slide>
+
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+-->
+
+  <ion-row class="ionrow">
+
+    <ion-col col-12 >
+      <ion-slides pager>
+        <ion-slide *ngFor="let data of imageList; let i = index">
+          <img *ngIf="data.ImageUrl != ''" src="https://api.tabserp.com/{{data.ImageUrl}}" class="sliderImage">
+          <img  *ngIf="data.ImageUrl == ''"  src="src/assets/imgs/imageNotFound.jpg" class="sliderImage">
+        </ion-slide>
+
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+
+
+
+</ion-content>
+<ion-footer>
+  <ion-row >
+    <ion-col col-12>
+      <h5>{{itemDetail.Name}}</h5>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col col-4><span class="price">&#8377;{{ourRate}}</span></ion-col>
+    <ion-col col-4><span class="original-price" *ngIf="mrpVisible==true"><i class="icon-rupee"></i>&#8377;{{mrpRate}}</span></ion-col>
+    <ion-col col-4><span class="discounted-offer text-uppercase"  *ngIf="mrpRate > ourRate">({{((mrpRate - ourRate)/mrpRate)*100 | number :'1.2-2'}}% OFF)</span></ion-col>
+  </ion-row>
+
+  <!-- <div class="pdp-price-info">
+     <span class="price">&#8377;{{ourRate}}</span>
+     <span>
+       <span class="original-price" *ngIf="mrpVisible==true"><i class="icon-rupee"></i>&#8377;{{mrpRate}}</span>
+       <span class="discounted-offer text-uppercase"  *ngIf="mrpRate > ourRate">({{((mrpRate - ourRate)/mrpRate)*100 | number :'1.2-2'}}% OFF)</span>
+     </span>
+   </div>-->
+
+  <div class="pdp-actions-container">
+<!--    <div class="box undefined">-->
+<!--      <div class="popup-container">-->
+<!--        <div class="overlay ">-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+
+
+
+    <div  class="action-buttons-container">
+      <div class="ctn-top-border padding-sm pdp-action-buttons visible">
+        <div class="grid">
+
+          <div class="width-60" style="margin-left: 35%">
+            <div *ngIf="closingStock >= 1 " class="ripple-container " align="center">
+              <button class="btn primary flex center full-width" id="btnGoToCart" style="margin-bottom:10%;"  (click)="goToCart()" *ngIf="itemPresent == true">
+                <!--<span class="icon-bag"></span>-->
+                GO TO CART</button>
+              <button class="btn primary flex center full-width" id="btnAddBag" style="margin-bottom:10%;"  (click)="addToCart()" *ngIf="itemPresent == false">
+                <!--<span class="icon-bag"></span>-->
+                ADD TO CART</button>
+              <div class="ripple">
+              </div>
+            </div>
+
+            <div class="ripple">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ion-row *ngIf="closingStock < 1 ">
+      <ion-col align="center">
+        <img src="assets/imgs/btn_out_stock_en.png" class="outOfStockDetails">
+
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer>
+</ion-app>

@@ -1,0 +1,120 @@
+<ion-header  class="new-background-color">
+  <ion-toolbar color="secondary">
+  <ion-title class="headName" >
+  Edit Address
+  </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+
+  <ion-buttons>
+    <button padding style="background-color: #469bf5;color:white;font-size: 15px">
+      <ion-icon name="locate" icon-start></ion-icon>
+      <b>Use my current location</b>
+    </button>
+  </ion-buttons>
+
+
+  <ion-item>
+    <ion-label position="floating" >Name <span style="color:red;">*</span></ion-label>
+
+    <ion-input type="text" [(ngModel)]="name">
+    </ion-input>
+
+  </ion-item>
+
+
+  <ion-item style="margin-top: 10px">
+    <ion-label position="floating">Designation </ion-label>
+
+    <ion-input type="text" [(ngModel)]="designation">
+    </ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 10px; ">
+    <ion-label position="floating">Address-1 <span style="color:red;">*</span></ion-label>
+
+    <ion-input type="text" [(ngModel)]="address1"></ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 10px; ">
+    <ion-label position="floating">Address-2</ion-label>
+
+    <ion-input type="text" [(ngModel)]="address2"></ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 10px; ">
+    <ion-label position="floating">Address-3</ion-label>
+
+    <ion-input type="text" [(ngModel)]="address3"></ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 10px; ">
+    <ion-label position="floating">City/District/Town <span style="color:red;">*</span></ion-label>
+
+    <ion-input type="text" [(ngModel)]="city"></ion-input>
+  </ion-item>
+
+
+  <ion-item style="margin-top: 10px;">
+
+    <ion-label position="floating">State <span style="color:red;">*</span></ion-label>
+    <ion-select [(ngModel)]="list" style="max-width: 100%;">
+      <ion-select-option *ngFor="let list of stateList; let i = index"
+                  [value]="list"
+                  [selected]="list.FieldCodeId == data.State" (ionSelect)="onChange(list)">
+        {{list.Text}}
+      </ion-select-option>
+
+    </ion-select>
+  </ion-item>
+
+  <ion-item style="margin-top: 10px; ">
+    <ion-label position="floating">Pincode <span style="color:red;">*</span></ion-label>
+
+    <ion-input type="number" [(ngModel)]="pincode"></ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 10px; ">
+    <ion-label position="floating">Mobile NO. <span style="color:red;">*</span></ion-label>
+
+    <ion-input type="number" [(ngModel)]="contact_no" maxlength="10"></ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 10px; ">
+    <ion-label position="floating">Alternate Mobile NO.</ion-label>
+
+    <ion-input type="number" [(ngModel)]="alt_contact_no" maxlength="10"></ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 10px; ">
+    <ion-label position="floating">GST Number</ion-label>
+
+    <ion-input type="number" [(ngModel)]="gstno"></ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 10px; ">
+    <ion-label position="floating">Distance</ion-label>
+
+    <ion-input type="number" [(ngModel)]="distance"></ion-input>
+  </ion-item>
+
+  <ion-item style="margin-top: 10px; ">
+    <ion-label position="floating">Email Id <span style="color:red;">*</span></ion-label>
+
+    <ion-input type="text" [(ngModel)]="emailId"></ion-input>
+  </ion-item>
+  <label style="color: #f53d3d">* indicate mandatory Fields</label>
+
+</ion-content>
+
+
+<footer padding class="footer">
+
+  <span style="margin-right: 20px" (click)="popupcancel()"> CANCEL</span>
+
+  <span (click)="submitData()">OK</span>
+
+</footer>
+
+

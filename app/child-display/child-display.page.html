@@ -1,0 +1,215 @@
+<ion-app>
+  <!--  <ion-header>
+        <ion-toolbar color="secondary" class="iontoolbar">
+            <ion-buttons slot="start">
+                <ion-back-button class="ionbackbutton" defaultHref="HomepagePage"></ion-back-button>
+            </ion-buttons>
+            <ion-title class="headclass" style="font-size: small">BHIKARAM UDYOG</ion-title>
+
+
+            &lt;!&ndash; <ion-buttons slot="end">
+                 <ion-button>
+                     <ion-icon slot="icon-only"  class="headericon">
+                     </ion-icon>
+                     <p *ngIf="totalAmount > 0">{{totalAmount |  currency:'INR':true:'1.0'}}</p>
+                 </ion-button>
+             </ion-buttons>&ndash;&gt;
+
+&lt;!&ndash;            <ion-buttons slot="primary">&ndash;&gt;
+&lt;!&ndash;                <ion-button>&ndash;&gt;
+&lt;!&ndash;                    <ion-icon slot="icon-only" (click)="gotoCartPage()" class="iconclass">&ndash;&gt;
+&lt;!&ndash;                    </ion-icon>&ndash;&gt;
+&lt;!&ndash;                    <img src="assets/imgs/ic_cart_white.png" class="imageicon">&ndash;&gt;
+&lt;!&ndash;                    &lt;!&ndash;&ndash;&gt;
+&lt;!&ndash;                                    <p *ngIf="itemCount > 0" class="OrderItemCount">{{itemCount}}</p>&ndash;&gt;
+&lt;!&ndash;                    &ndash;&gt;&ndash;&gt;
+&lt;!&ndash;                </ion-button>&ndash;&gt;
+&lt;!&ndash;            </ion-buttons>&ndash;&gt;
+
+            <ion-buttons>
+                <ion-button>
+   <img slot="right" src="assets/imgs/ic_cart_white.png"  >
+
+                </ion-button>
+            </ion-buttons>
+
+        </ion-toolbar>
+
+        <ion-row class="rowclass">
+            <ion-col [style.col]="spinner == false ? 'col-11' : 'col-12'">
+                <ion-searchbar class="ionsearchbar"
+                               (ionInput)="getItems($event)" animated="true" placeholder="Search Items"
+                               autocomplete="on"
+                               (click)="openSearchPage()">
+                </ion-searchbar>
+            </ion-col>
+            <ion-spinner *ngIf="spinner == true" class="spiner" name="ios"></ion-spinner>
+        </ion-row>
+
+    </ion-header>-->
+   <!-- <ion-header class="new-background-color">
+        <ion-toolbar color="secondary">
+            <ion-buttons slot="start" >
+                <ion-menu-button autoHide="false"></ion-menu-button>
+            </ion-buttons>
+            <ion-title class="headName"><b>{{companyName}}</b></ion-title>
+
+            <ion-buttons slot="primary">
+                <ion-button  >
+                    <p *ngIf="totalAmount > 0"> <b>{{totalAmount | currency:'INR':true:'1.0'}}</b></p>
+                </ion-button>
+            </ion-buttons>
+
+            <ion-buttons slot="primary">
+                <ion-button   (click)="gotoCartPage()" >
+                    <ion-icon name="cart"></ion-icon>
+                   <ion-badge *ngIf="itemCount > 0" slot="end" class="itemCountCart">{{itemCount}}</ion-badge>
+&lt;!&ndash;                    <p *ngIf="itemCount > 0" class="OrderItemCount">{{itemCount}}</p>&ndash;&gt;
+                </ion-button>
+            </ion-buttons>
+
+        </ion-toolbar>
+        <ion-row class="rowclass" [ngStyle]="{'background-color':'#ED3237'}" >
+            <ion-col [style.col]="spinner == false ? 'col-11' : 'col-12'" >
+                <ion-searchbar
+                        (ionInput)="getItems($event)" animated="true"   autocomplete="on" (click)="openSearchPage()">
+                </ion-searchbar>
+            </ion-col>
+            <ion-spinner *ngIf="spinner == true" class="spiner" name="ios"></ion-spinner>
+        </ion-row>
+
+    </ion-header>-->
+
+    <ion-header class="new-background-color">
+        <ion-toolbar color="secondary">
+            <ion-buttons slot="start">
+
+                <!--
+                                <ion-back-button class="ionbackbutton" ></ion-back-button>
+                -->
+                <ion-back-button class="ionbackbutton" defaultHref="HomepagePage"></ion-back-button>  <!--;page=itemList-->
+
+            </ion-buttons>
+            <ion-title class="headName"><b>{{companyName}}</b></ion-title>
+
+            <ion-buttons slot="primary">
+                <ion-button  >
+                    <p *ngIf="totalAmount > 0"> <b>{{totalAmount | currency:'INR':true:'1.0'}}</b></p>
+                </ion-button>
+            </ion-buttons>
+
+            <ion-buttons slot="primary">
+                <ion-button   (click)="gotoCartPage()" >
+                    <ion-icon name="cart"></ion-icon>
+                    <ion-badge *ngIf="itemCount > 0" slot="end" class="itemCountCart">{{itemCount}}</ion-badge>
+                </ion-button>
+            </ion-buttons>
+
+        </ion-toolbar>
+        <ion-row class="rowclass" [ngStyle]="{'background-color':'#ED3237'}" >
+            <ion-col class="colPadding" [style.col]="spinner == false ? 'col-11' : 'col-12'" >
+                <ion-searchbar
+                        (ionInput)="getItems($event)" animated="true"   autocomplete="on" (click)="openSearchPage()">
+                </ion-searchbar>
+            </ion-col>
+            <ion-spinner *ngIf="spinner == true"   name="ios"></ion-spinner>
+        </ion-row>
+
+    </ion-header>
+
+    <ion-content>
+
+
+        <ion-row class="ionrow">
+
+            <ion-col col-12 class="item_image">
+                <ion-slides pager>
+                    <ion-slide>
+
+                        <img src="https://api.tabserp.com/{{sliderImageUrlList.Slider1Url}}"
+                             class="sliderImage"/>
+
+                    </ion-slide>
+
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+
+
+       <!-- <ion-list class="accordion-list">  &lt;!&ndash;lines="inset" inset="true"&ndash;&gt;
+            &lt;!&ndash;
+                    <ion-list-header *ngFor="let item of DisplayData; let i = index" no-lines no-padding style="margin-bottom: 4px">
+            &ndash;&gt;
+            <ion-list-header *ngFor="let item of DisplayData; let i = index" no-lines no-padding>
+
+                <ion-button fill="clear" expand="full" (click)="itemSelect(i,item)" detail-none class="buttonclass2"
+                            [ngClass]="{'section-active': item.open, 'section': !item.open}">
+
+                    <ion-img
+                            slot="start" class="circle-pic"
+                            src="https://api.tabserp.com/{{item.ImageURL}}"></ion-img>
+
+
+                    <ion-item margin-vertical="center">
+                        <ion-text align="center" class="iontextclass">
+                            {{ item.DisplaySectionName }}
+                        </ion-text>
+                    </ion-item>
+
+
+                    <ion-col  ></ion-col>
+
+                    <ion-col  >
+                    </ion-col>
+
+                    <ion-col class="ioncolclass" margin-right="0px">
+
+                        <ion-item item-end="true" margin-right="-20px">
+
+                            <ion-icon item-end="true" margin-right="0px" name="ios-arrow-forward" color="dark"
+                                      class="arrowforward" *ngIf="!item.open"></ion-icon>
+
+                            <ion-icon item-right name="ios-arrow-down" class="arrowforward"
+                                      *ngIf="item.open"></ion-icon>
+
+                        </ion-item>
+                    </ion-col>
+
+                </ion-button>
+
+
+                <ion-list *ngIf="item.open" no-lines> &lt;!&ndash;*ngIf="item.open"&ndash;&gt;
+                    <ion-list-header *ngFor="let child of childDisplayList; let j = index" no-padding class="ionlist">
+
+
+                        <ion-button (click)="itemSelect" class="child" detail-none>
+
+                        </ion-button>
+
+
+                    </ion-list-header>
+                </ion-list>
+            </ion-list-header>
+        </ion-list>-->
+
+        <ion-list *ngFor="let item of DisplayData; let i = index">
+            <ion-item (click)="itemSelect(i,item)">
+
+                <ion-avatar slot="start" >
+                    <img  src="https://api.tabserp.com/{{item.ImageURL}}"   >
+                </ion-avatar>
+
+
+                <ion-label class="textDisplaySection">{{ item.DisplaySectionName }}</ion-label>
+
+
+                <ion-icon slot="end" name="arrow-dropright"></ion-icon>
+
+            </ion-item>
+
+        </ion-list>
+
+
+    </ion-content>
+
+</ion-app>

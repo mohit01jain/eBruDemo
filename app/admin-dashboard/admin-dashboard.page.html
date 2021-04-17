@@ -1,0 +1,177 @@
+<ion-header>
+
+  <ion-toolbar color="secondary">
+
+  
+    <ion-title align="center" margin-top margin-bottom><span style="font-size: 16px">Admin Dashboard</span></ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content   padding-top>
+  <ion-row class="TilesRow" >
+    <ion-col sizeXl="6" sizeLg="6" sizeMd="6" col-6 size="6" class="Tiles_Coltwo" align="center"  (click)="openLedger()">
+      <div>
+
+        <ion-row class="tileImage">
+          <ion-col col-4 size="4"></ion-col>
+          <ion-col col-4 size="4" align="center">  <img src="assets/icon/Ledger_Icon.png"></ion-col>
+          <ion-col col-4 size="4"></ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-12 size="12" align="center">
+            <span class="Tiles_span_red" ><b>Ledger</b></span>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </ion-col>
+
+    <ion-col col-6 size="6" sizeXl="" sizeLg="6" sizeMd="6"  class="Tiles_Colone" align="center"  (click)="openBlock()">
+      <div>
+
+        <ion-row class="tileImage">
+          <ion-col col-4 size="4"></ion-col>
+          <ion-col col-4 size="4" align="center">  <img src="assets/icon/order_icon.png"></ion-col>
+          <ion-col col-4 size="4"></ion-col>
+        </ion-row>
+
+        <ion-row >
+          <ion-col col-12 size="12" align="center">
+            <span class="Tiles_span_white" ><b>Block Order Party & Item Wise</b></span>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </ion-col>
+
+
+  </ion-row>
+
+  <ion-row class="TilesRow" >
+    <ion-col col-6 size="6" class="Tiles_Colone" align="center"(click)="openOrderList()" >
+      <div>
+
+        <ion-row class="tileImage">
+          <ion-col col-4 size="4"></ion-col>
+          <ion-col col-4 size="4" align="center">  <img src="assets/icon/orders_Icon.jpg">
+          </ion-col>
+
+          <!--          <ion-col col-4 size="4"> <ion-badge style="margin-left: -65px" color="danger">4</ion-badge></ion-col>-->
+        </ion-row>
+
+        <ion-row >
+          <ion-col col-12 size="12" align="center">
+            <span class="Tiles_span_white" text-wrap ><b>Order List</b></span>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </ion-col>
+
+    <ion-col   col-6 size="6" class="Tiles_Coltwo" align="center" (click)="getReceipt()">
+      <div>
+
+        <ion-row class="tileImage">
+          <ion-col col-4 size="4"></ion-col>
+          <ion-col col-4 size="4" align="center">  <img src="assets/imgs/receipt_icon.png"></ion-col>
+          <ion-col col-4 size="4"></ion-col>
+        </ion-row>
+
+        <ion-row >
+          <ion-col col-12 size="12" align="center" style="margin-top: -5px">
+            <span class="Tiles_span_red" ><b>Receipt of Payment Received</b></span>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </ion-col>
+
+
+  </ion-row>
+  <ion-row class="TilesRow" >
+
+
+    <ion-col   col-6 size="6" class="Tiles_Coltwo" align="center" (click)="viewBill()">
+      <div>
+
+        <ion-row class="tileImage">
+          <ion-col col-4 size="4"></ion-col>
+          <ion-col col-4 size="4" align="center">  <img src="assets/icon/viewBill.png"></ion-col>
+          <ion-col col-4 size="4"></ion-col>
+        </ion-row>
+
+        <ion-row >
+          <ion-col col-12 size="12" align="center" >
+            <span class="Tiles_span_red" ><b>View Bill</b></span>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </ion-col>
+    <ion-col   col-6 size="6" class="Tiles_Colone" align="center" (click)="registeredCustomer()">
+      <div>
+
+        <ion-row class="tileImage">
+          <ion-col col-4 size="4"></ion-col>
+          <ion-col col-4 size="4" align="center">  <img src="assets/icon/client_list.png"></ion-col>
+          <ion-col col-4 size="4"></ion-col>
+        </ion-row>
+
+        <ion-row >
+          <ion-col col-12 size="12" align="center"  >
+            <span class="Tiles_span_white" ><b>Registered Customer's List</b></span>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="TilesRow" >
+    <ion-col   col-6 size="6" class="Tiles_Colone" align="center" (click)="presentConfirm('Logout','Do you want to Quit ?')" >
+      <div>
+
+        <ion-row class="tileImage">
+          <ion-col col-4 size="4"></ion-col>
+          <ion-col col-4 size="4" align="center">  <img src="assets/icon/logout.png"></ion-col>
+          <ion-col col-4 size="4"></ion-col>
+        </ion-row>
+
+        <ion-row >
+          <ion-col col-12 size="12" align="center">
+            <span class="Tiles_span_white" text-wrap ><b>Logout</b></span>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </ion-col>
+
+    <ion-col col-6 size="6" class="Tiles_Coltwo" align="center" (click)="getReceipt()">
+      <div>
+
+        <ion-row class="tileImage">
+          <ion-col col-4 size="4"></ion-col>
+          <ion-col col-4 size="4" align="center">  <img src="assets/imgs/googleplay.png"></ion-col>
+          <ion-col col-4 size="4"></ion-col>
+        </ion-row>
+
+        <ion-row >
+          <ion-col col-12 size="12" align="center" style="margin-top: -5px">
+            <span class="Tiles_span_red" ><b>App Version </b></span>
+          </ion-col>
+        </ion-row>
+        <ion-row >
+          <ion-col col-12 size="12" align="center" style="margin-top: -5px">
+            <span class="Tiles_span_red" ><b>{{appVersionNumber}}</b></span>
+          </ion-col>
+        </ion-row>
+
+      </div>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

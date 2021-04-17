@@ -1,0 +1,222 @@
+
+<ion-app>
+<ion-header class="new-background-color">
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start" >
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="headName"><b>{{companyName}}</b></ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button  >
+        <p *ngIf="totalAmount > 0"> <b>{{totalAmount | currency:'INR':true:'1.0'}}</b></p>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="primary">
+      <ion-button   (click)="gotoCartPage()" >
+        <ion-icon name="cart"></ion-icon>
+        <ion-badge *ngIf="itemCount > 0" slot="end" class="itemCountCart">{{itemCount}}</ion-badge>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+  <ion-row class="rowclass" [ngStyle]="{'background-color':'#ED3237'}" >
+    <ion-col class="colPadding" [style.col]="spinner == false ? 'col-11' : 'col-12'" >
+      <ion-searchbar
+              (ionInput)="getItems($event)" animated="true"   autocomplete="on" (click)="openSearchPage()">
+      </ion-searchbar>
+    </ion-col>
+    <ion-spinner *ngIf="spinner == true"   name="ios"></ion-spinner>
+  </ion-row>
+
+</ion-header>
+
+<ion-content class="homeContent" color="tertiary" >
+
+
+  <div class="thumnails"  style="height:auto;width:100vw;margin-top:20px;" margin-bottom="4px">
+    <div class="list-thumbnail">
+      <div class="img-thumb" [class.selected-img]="x.selected" *ngFor="let x of DisplayData" (click)="onThumbnailClick(x)">
+        <div (click)="itemSelect(x)">
+        <ion-row>
+          <ion-avatar style="margin:auto;height: 80px;width:80px;border-radius: 50%;">
+        <ion-img class="imageclass1" src="https://api.tabserp.com//{{x.ImageURL}}"></ion-img>
+          </ion-avatar>
+        </ion-row>
+        <ion-row style="text-align: center; ">
+          <p class="categoryTitle" style="color:black;margin:auto;"><b>{{x.DisplaySectionName}}</b></p>
+        </ion-row>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+  <ion-row>
+    <ion-col col-12 size="12" *ngIf="sliderImageUrl.Slider1Url !==''" class="item_image">
+      <ion-slides autoplay="2000"  pager speed="1000">
+
+
+        <ion-slide >
+          <img src="https://api.tabserp.com/{{sliderImageUrl.Slider1Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUrl.Slider2Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUrl.Slider2Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUrl.Slider3Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUrl.Slider3Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUrl.Slider4Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUrl.Slider4Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUrl.Slider5Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUrl.Slider5Url}}" class="sliderImage">
+        </ion-slide>
+
+
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+
+    <ion-col col-12 size="12" *ngIf="sliderImageUr2.Slider1Url !==''" class="item_image">
+      <ion-slides  autoplay="2000"  pager speed="1000">
+
+
+        <ion-slide>
+          <img src="https://api.tabserp.com/{{sliderImageUr2.Slider1Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUr2.Slider2Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr2.Slider2Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUr2.Slider3Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr2.Slider3Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUr2.Slider4Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr2.Slider4Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUr2.Slider5Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr2.Slider5Url}}" class="sliderImage">
+        </ion-slide>
+
+
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+
+    <ion-col col-12 size="12" *ngIf="sliderImageUr3.Slider1Url !==''" class="item_image">
+      <ion-slides autoplay="2000"  pager speed="1000">
+
+
+        <ion-slide>
+          <img src="https://api.tabserp.com/{{sliderImageUr3.Slider1Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUr3.Slider2Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr3.Slider2Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUr3.Slider3Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr3.Slider3Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUr3.Slider4Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr3.Slider4Url}}" class="sliderImage">
+        </ion-slide>
+
+        <ion-slide *ngIf="sliderImageUr3.Slider5Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr3.Slider5Url}}" class="sliderImage">
+        </ion-slide>
+
+
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+
+    <ion-col col-12 size="12" *ngIf="sliderImageUr4.Slider1Url !==''" class="item_image">
+      <ion-slides autoplay="2000"  pager speed="1000">
+        <ion-slide >
+          <img src="https://api.tabserp.com/{{sliderImageUr4.Slider1Url}}" class="sliderImage">
+        </ion-slide>
+
+        <ion-slide *ngIf="sliderImageUr4.Slider2Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr4.Slider2Url}}" class="sliderImage">
+        </ion-slide>
+
+        <ion-slide *ngIf="sliderImageUr4.Slider3Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr4.Slider3Url}}" class="sliderImage">
+        </ion-slide>
+
+        <ion-slide *ngIf="sliderImageUr4.Slider4Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr4.Slider4Url}}" class="sliderImage">
+        </ion-slide>
+
+        <ion-slide *ngIf="sliderImageUr4.Slider5Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr4.Slider5Url}}" class="sliderImage">
+        </ion-slide>
+
+
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+
+    <ion-col col-12 size="12" *ngIf="sliderImageUr5.Slider1Url !==''" class="item_image">
+      <ion-slides autoplay="2000" pager speed="1000">
+
+        <ion-slide  >
+          <img src="https://api.tabserp.com/{{sliderImageUr5.Slider1Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUr5.Slider2Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr5.Slider2Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUr5.Slider3Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr5.Slider3Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUr5.Slider4Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr5.Slider4Url}}" class="sliderImage">
+        </ion-slide>
+
+
+        <ion-slide *ngIf="sliderImageUr5.Slider5Url !==''">
+          <img src="https://api.tabserp.com/{{sliderImageUr5.Slider5Url}}" class="sliderImage">
+        </ion-slide>
+
+
+      </ion-slides>
+    </ion-col>
+  </ion-row>
+
+</ion-content>
+
+</ion-app>

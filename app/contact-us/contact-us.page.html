@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start" >
+      <ion-menu-button autoHide="false"></ion-menu-button>
+      </ion-buttons>
+    <ion-title>ContactUs</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="secondary" >
+
+
+  <ion-row style="margin-top: 10%">
+    <ion-col align="center">
+     <span style="color: white;font-size: 50px;font-family: Calibri">
+       <b>GET IN TOUCH</b>
+     </span>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col align="center">
+      <img src="assets/icon/geolocalisation.png" style="width:130px ;height: 130px;">
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col align="center">
+     <span style="color: white;font-size: 25px;font-family: Calibri">
+       <b>Address</b>
+     </span>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col align="center">
+     <span style="font-size: 20px;font-family: Calibri">
+       <b>{{cName}}</b><br>
+       {{cAddress1}} ,<br>
+       {{cAddress2}} , {{cCity}} - {{cPincode}},<br>
+       {{cStateName}}({{cStateCode}}) , INDIA<br>
+        Ph. +91 - {{cPhone1}}<br>
+        Ph. +91 - {{cPhone2}}<br>
+       {{cEMailID}}
+     </span>
+
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row style="margin-top: 5%">
+    <ion-col>
+      <ion-item>
+        <ion-label class="fontsize" position="stacked"><b>Comments</b></ion-label>
+
+        <ion-textarea no-lines="4" style="font-size: 20px;color: #94969f;">
+
+        </ion-textarea>
+
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row >
+    <ion-buttons>
+      <button style="background-color: #ED3237;font-size: 15px ;color: white;padding: 10px"  >Submit</button>
+    </ion-buttons>
+    <ion-buttons >
+      <button style="background-color: #ED3237;font-size: 15px ;color: white;padding: 10px;"  >Reset</button>
+    </ion-buttons>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-item>
+        <ion-label class="fontsize" position="stacked"><b>Answer</b></ion-label>
+
+        <ion-textarea no-lines="4" style="font-size: 20px;color: #94969f;">
+
+        </ion-textarea>
+
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-buttons>
+      <button style="background-color: #ED3237;font-size: 15px ;color: white;padding: 10px"  >Submit</button>
+    </ion-buttons>
+    <ion-buttons>
+      <button style="background-color: #ED3237;font-size: 15px ;color: white;padding: 10px;"  >Reset</button>
+    </ion-buttons>
+  </ion-row>
+
+
+
+</ion-content>

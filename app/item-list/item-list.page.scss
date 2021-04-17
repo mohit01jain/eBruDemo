@@ -1,0 +1,278 @@
+.pClass{
+  }
+
+.ionbackbutton {
+  color: white
+}
+
+.line124
+{
+  --ion-grid-column-padding-bottom-xl:3px;
+  --ion-grid-column-padding-bottom-lg:3px;
+}
+
+.itemCountCart{
+  margin-top: -35%
+}
+
+  .md-button{
+    float: right;
+    height: 2rem;
+    width: 0px;
+    margin:2px 1px 0 -1px;
+
+  }
+  .circleButton{
+    height: 1.6rem;
+    float: left;
+
+  }
+
+.iontoolbar
+{
+  height:35px;
+}
+
+.iconclass
+{
+  margin-right: 20px;
+}
+
+.ionsearchbar {
+
+  padding: 0px;
+  padding-top: 5px;
+}
+
+
+
+
+[col-8]{
+    //margin-top: 1%;
+  }
+  .rowItme{
+    margin-top: -30px;
+  }
+  .custom-popover .popover-content  {
+    width: 60%;
+  }
+
+  .increment_btn{
+    color: grey;
+    font-size: small;
+    font-family: Calibri;
+    float: right;
+    margin:-35px 6px 0px 0px;
+  }
+  .incrementCol{
+    margin: auto;
+  }
+  .decrement_btn{
+    color: grey;
+    font-size: small;
+    font-family: Calibri;
+    float: right;
+    margin: 13px 6px 0px 6px;
+
+  }
+  .maxQty {
+    color: red;
+    font-size: 14px;
+  }
+
+  .item_image{
+    padding: 0;
+    margin: 0;
+    height: 160px;
+  }
+
+  .itemName{
+    margin-top: 2px;
+    color: #483d8b;
+    font-weight: bold;
+    font-size: small;
+  }
+
+  ion-footer{
+    height: 6%;
+  }
+
+  .footer_btn{
+    color: #e07917;
+    margin-top: 5px;
+  }
+  .OrderItemCount{
+    z-index: 999;
+    /* position: absolute; */
+    margin-top: inherit;
+    margin-right: 3px;
+    margin-left: -13px;
+    margin-bottom: 6px;
+    margin-top: -4px;
+    background-color: darkslateblue;
+    color: white;
+    padding: 1px;
+    font-size: small;
+    font-family: Calibri;
+    border: white solid 1px;
+  }
+
+  .usernameheader{
+    z-index: 999;
+    /* position: absolute; */
+    margin-right: 3px;
+    margin-left: -37px;
+    margin-bottom: 10px;
+    margin-top: 45px;
+    color: white;
+    font-family: Calibri;
+    font-size: small;
+    border: white solid 1px;
+  }
+
+  .homeContent{
+    background: rgba(89, 254, 60, 0.08);
+  }
+
+
+
+  .QtyRow {
+    font-size:   x-small;
+    color: green;
+
+  }
+
+  .QtyRow100 {
+    font-size: x-small;
+    color: green;
+
+  }
+
+  .QtyRow500 {
+    font-size: x-small;
+    color: green;
+
+
+  }
+
+  .QtyRowRE {
+    font-size: x-small;
+    color: green;
+    margin-top: 6px;
+
+  }
+
+  ion-searchbar{
+    input::placeholder {
+      color:darkblue!important;
+    }
+  }
+
+.new-background-color{
+  --background: #ED3237;
+  color: white;
+}
+
+
+.rowclass {
+  margin-top: -12px;
+  background: #ED3237;
+}
+
+.quantText {
+  border: 2px grey solid;
+  width: 90%;
+  text-align: center;
+  background-color: white;
+
+
+}
+
+.QtyRow {
+  font-size: x-small;
+  color: green;
+  max-width: 24%;
+  width: 24%;
+
+}
+
+.QtyRow1000 {
+  font-size: x-small;
+  color: green;
+  max-width: 26%;
+  width: 26%;
+
+}
+
+.QtyRow500 {
+  font-size: x-small;
+  color: green;
+
+
+}
+
+.QtyRow100 {
+  font-size: x-small;
+  color: green;
+
+
+}
+
+.QtyRowRE {
+  font-size: x-small;
+  color: green;
+  margin-top: 6px;
+
+}
+
+.listDiv {
+  border: 1px solid #483d8b;
+}
+
+ion-searchbar {
+  input::placeholder {
+    color: darkblue !important;
+  }
+
+  padding: 0px;
+  padding-top: 5px;
+}
+
+
+.mrpRate {
+  text-decoration: line-through;
+  color: red;
+  font-size: small;
+
+}
+
+.off {
+  color: orangered;
+  font-size: small;
+}
+
+
+
+.ourRate {
+  color: darkgray;
+  margin-left: 1px;
+  font-size: small;
+}
+
+
+.addBasket {
+  margin-top: 2%;
+}
+
+.mrpText {
+  font-size: x-small;
+}
+
+.headName {
+  font-size: small;
+}
+
+.colPadding
+{
+  padding: 3px;
+}

@@ -1,0 +1,358 @@
+
+<ion-header>
+
+  <ion-toolbar color="secondary">
+
+    <ion-buttons slot="start" >
+      <ion-menu-button autoHide="false"></ion-menu-button>
+<!--
+      <ion-icon name="menu"></ion-icon>
+-->
+    </ion-buttons>
+    <ion-title>EditProfile</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div *ngIf="emailIDVisible == false">
+    <img class="imageSignUp" src="assets/imgs/ic_sign_in.png">
+    <ion-item style="margin-bottom: 12px;" [attr.no-lines]="null">
+
+      <h6 style="color: #000000;margin-bottom: 12px;">My Reference Code </h6>
+
+      <ion-note slot="end" style="color: black;font-size: large;">
+        <b> {{editData.ReferralCode}}</b>
+      </ion-note>
+    </ion-item>
+
+
+
+
+    <ion-item>
+      <ion-label position="floating">Name<span style="color:red;">&nbsp;*</span></ion-label>
+
+      <ion-input [(ngModel)]="editData.name" margin-top="6px" name="name" type="text" pattern="Name"></ion-input>
+
+    </ion-item>
+
+
+    <div *ngIf="nameError == false" class="error" padding-left>
+      Name field can not be empty.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Mobile No.</ion-label>
+
+
+      <ion-input [(ngModel)]="editData.userMobile" margin-top="6px" type="tel" name="userMobile" disabled  maxlength="10"></ion-input>
+
+    </ion-item>
+    <div *ngIf="userMobileError == false" class="error" padding-left>
+      Invalid Mobile Number.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Email ID</ion-label>
+      <ion-input [(ngModel)]="editData.userEmail" margin-top="6px" name="email_id" type="email"></ion-input>
+
+    </ion-item>
+
+
+    <div *ngIf="userEmailError == false" class="error" padding-left>
+      Invalid userId.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Address 1<span style="color:red;">&nbsp;*</span></ion-label>
+      <ion-input [(ngModel)]="editData.address_line1" margin-top="6px" name="address_line1" type="text"></ion-input>
+
+    </ion-item>
+
+
+    <div *ngIf="userAddress1Error == false" class="error" padding-left>
+      Address field can not be empty.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Address 2</ion-label>
+      <ion-input [(ngModel)]="editData.address_line2" name="address_line2" margin-top="6px" type="text"></ion-input>
+
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">City</ion-label>
+      <ion-input [(ngModel)]="editData.city" name="city" margin-top="6px" type="text"></ion-input>
+
+    </ion-item>
+
+
+    <div *ngIf="userCityError == false" class="error" padding-left>
+      City field can not be empty.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Pincode<span style="color:red;">&nbsp;*</span></ion-label>
+      <ion-input [(ngModel)]="editData.pincode" margin-top="6px" type="tel" name="pincode" maxlength="6"></ion-input>
+
+    </ion-item>
+    <div *ngIf="userPincodeError == false" class="error" padding-left>
+      Invalid Pincode .
+    </div>
+    <ion-row>
+      <ion-col col-1 size="1" style="padding: 17px;">
+        <ion-checkbox color="dark" (click)="cDetails()"></ion-checkbox>
+      </ion-col>
+      <ion-col col-6 size="6" size="6">
+        <p style="font-size: 13px;"><b>Commercial Details</b></p>
+      </ion-col>
+    </ion-row>
+
+    <form style="border:  2px solid #ED3237">
+      <ion-row align="center" style="margin-top: auto">
+        <ion-col col-3 size="3" size="3"></ion-col>
+        <ion-col col-6 size="6" size="6">
+          <h3 style="color: darkslateblue"><b>Commercial Details</b></h3>
+        </ion-col>
+        <ion-col col-3 size="3" size="3"></ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-label position="floating">PAN Card No.<span style="color:red;">&nbsp;*</span></ion-label>
+        <ion-input [(ngModel)]="editData.cPAN" type="text" style="text-transform: uppercase;" autocapitalize="characters" margin-top="6px" name="cPAN" [disabled]="!isEnabledP"
+                   maxlength="10"></ion-input>
+
+      </ion-item>
+      <div *ngIf="cPanError == false" class="error" padding-left>
+        Invalid PAN Number.
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">GST No.<!--<span style="color:red;">&nbsp;*</span>--></ion-label>
+        <ion-input [(ngModel)]="editData.cGSTNO" type="text" style="text-transform: uppercase;" autocapitalize="characters" margin-top="6px" name="cGSTNO" [disabled]="!isEnabledG"
+                   maxlength="15"></ion-input>
+      </ion-item>
+      <div *ngIf="cGSTError == false" class="error" padding-left>
+        Invalid GST Number.
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Fss Lic. No.</ion-label>
+        <ion-input [(ngModel)]="editData.cFoodLicNo" type="text" style="text-transform: uppercase;" autocapitalize="characters" margin-top="6px" name="cFoodLicNo " [disabled]="!isEnabledF"
+                   maxlength="16"></ion-input>
+      </ion-item>
+
+      <h6 style="color: darkslateblue ; margin-top: 2%;margin-left: 5%"><b>Contact Person</b></h6>
+
+      <form margin="5px" style="border: 1px solid #ED3237;margin-top: 1%;">
+
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input [(ngModel)]="editData.cContactPersonName" margin-top="6px" type="text" name="cContactPersonName"
+                     [disabled]="!isEnabledM"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Mobile No.</ion-label>
+          <ion-input [(ngModel)]="editData.cContactPersonMobileNo" margin-top="6px" type="tel" name="cContactPersonMobileNo"
+                     [disabled]="!isEnabledM" maxlength="10"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating"> Email ID</ion-label>
+          <ion-input [(ngModel)]="editData.cContactPersonEMailID" margin-top="6px" name="cContactPersonEMailID" [disabled]="!isEnabledE"
+                     type="email"></ion-input>
+
+        </ion-item>
+        <div *ngIf="cEmailError == false" class="error" padding-left>
+          Invalid Email.
+        </div>
+
+      </form>
+
+
+    </form>
+  </div>
+
+  <div *ngIf="emailIDVisible == true">
+    <img class="imageSignUp" src="assets/imgs/ic_sign_in.png">
+    <ion-item no-lines>
+
+      <h2 style="color: #ED3237;">My Reference Code </h2>
+
+      <ion-note item-end style="color: black;font-size: large">
+        <b> {{editData.ReferralCode}}</b>
+      </ion-note>
+    </ion-item>
+
+
+
+
+    <ion-item>
+      <ion-label position="floating">Name<span style="color:red;">&nbsp;*</span></ion-label>
+
+      <!--<ion-input type="text"  name="name" [(ngModel)]="registerData.userAddress2" pattern="Name" ></ion-input>-->
+      <ion-input [(ngModel)]="editData.name" name="name" type="text" margin-top="6px"  pattern="Name"></ion-input>
+
+    </ion-item>
+
+
+    <!--</ion-col>-->
+    <div *ngIf="nameError == false" class="error" padding-left>
+      Name field can not be empty.
+    </div>
+    <!--</ion-row>-->
+
+
+    <ion-item>
+      <ion-label position="floating">Mobile No.</ion-label>
+
+
+      <!--<ion-input  [(ngModel)]="editData.name" name="name" type="text" pattern="Name" ></ion-input>-->
+      <ion-input [(ngModel)]="editData.userMobile" type="tel" name="userMobile" margin-top="6px"  maxlength="10"></ion-input>
+
+    </ion-item>
+    <div *ngIf="userMobileError == false" class="error" padding-left>
+      Invalid Mobile Number.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Email ID</ion-label>
+      <ion-input [(ngModel)]="editData.userEmail" name="email_id" margin-top="6px" disabled type="email"></ion-input>
+
+    </ion-item>
+
+
+    <div *ngIf="userEmailError == false" class="error" padding-left>
+      Invalid userId.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Address 1<span style="color:red;">&nbsp;*</span></ion-label>
+      <ion-input [(ngModel)]="editData.address_line1" margin-top="6px" name="address_line1" type="text"></ion-input>
+
+    </ion-item>
+
+
+    <div *ngIf="userAddress1Error == false" class="error" padding-left>
+      Address field can not be empty.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Address 2</ion-label>
+      <ion-input [(ngModel)]="editData.address_line2" name="address_line2" margin-top="6px" type="text"></ion-input>
+
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">City</ion-label>
+      <ion-input [(ngModel)]="editData.city" name="city" margin-top="6px" type="text"></ion-input>
+
+    </ion-item>
+
+
+    <div *ngIf="userCityError == false" class="error" padding-left>
+      City field can not be empty.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Pincode<span style="color:red;">&nbsp;*</span></ion-label>
+      <ion-input [(ngModel)]="editData.pincode" type="tel" margin-top="6px" name="pincode" maxlength="6"></ion-input>
+
+    </ion-item>
+    <div *ngIf="userPincodeError == false" class="error" padding-left>
+      Invalid Pincode .
+    </div>
+    <ion-row>
+      <ion-col col-1 size="1" style="padding: 17px;">
+        <ion-checkbox color="dark" (click)="cDetails()"></ion-checkbox>
+      </ion-col>
+      <ion-col col-6 size="6" size="6">
+        <p style="font-size: 13px;"><b>Commercial Details</b></p>
+      </ion-col>
+    </ion-row>
+
+    <form style="border:  2px solid #ED3237">
+      <ion-row align="center" style="margin-top: auto">
+        <ion-col col-3 size="3" size="3"></ion-col>
+        <ion-col col-6 size="6" size="6">
+          <h3 style="color: darkslateblue"><b>Commercial Details</b></h3>
+        </ion-col>
+        <ion-col col-3 size="3" size="3"></ion-col>
+      </ion-row>
+
+      <ion-item>
+        <ion-label position="floating">PAN Card No.<span style="color:red;">&nbsp;*</span></ion-label>
+        <ion-input [(ngModel)]="editData.cPAN" margin-top="6px"  type="text" style="text-transform: uppercase;" autocapitalize="characters" name="cPAN" [disabled]="!isEnabledP"
+                   maxlength="10"></ion-input>
+
+      </ion-item>
+      <div *ngIf="cPanError == false" class="error" padding-left>
+        Invalid PAN Number.
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">GST No.<span style="color:red;">&nbsp;*</span></ion-label>
+        <ion-input [(ngModel)]="editData.cGSTNO" type="text" style="text-transform: uppercase;" autocapitalize="characters" margin-top="6px" name="cGSTNO" [disabled]="!isEnabledG"
+                   maxlength="15"></ion-input>
+      </ion-item>
+      <div *ngIf="cGSTError == false" class="error" padding-left>
+        Invalid GST Number.
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Fss Lic. No.</ion-label>
+        <ion-input [(ngModel)]="editData.cFoodLicNo" margin-top="6px" type="text" style="text-transform: uppercase;" autocapitalize="characters" name="cFoodLicNo " [disabled]="!isEnabledF"
+                   maxlength="14"></ion-input>
+      </ion-item>
+
+      <h6 style="color: darkslateblue ; margin-top: 2%;margin-left: 5%"><b>Contact Person</b></h6>
+
+      <form margin="5px" style="border: 1px solid #ED3237;margin-top: 1%;">
+
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input [(ngModel)]="editData.cContactPersonName" type="text" margin-top="6px" name="cContactPersonName"
+                     [disabled]="!isEnabledM"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Mobile No.</ion-label>
+          <ion-input [(ngModel)]="editData.cContactPersonMobileNo" type="tel" margin-top="6px" name="cContactPersonMobileNo"
+                     [disabled]="!isEnabledM" maxlength="10"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating"> Email ID</ion-label>
+          <ion-input [(ngModel)]="editData.cContactPersonEMailID" margin-top="6px" name="cContactPersonEMailID" [disabled]="!isEnabledE"
+                     type="email"></ion-input>
+
+        </ion-item>
+        <div *ngIf="cEmailError == false" class="error" padding-left>
+          Invalid Email.
+        </div>
+
+      </form>
+
+
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer>
+    <ion-buttons>
+  <ion-button style="background-color:#ED3237;width: 100%;line-height:3.6 ;color: #ffffff;" class="createAccout" type="submit" (click)="updateProfile()"><span style="color: white;">Update</span></ion-button>
+    </ion-buttons>
+</ion-footer>
+

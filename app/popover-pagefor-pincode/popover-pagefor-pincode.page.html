@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="secondary" class="iontoolbar1">
+
+
+    <ion-title class="headclass" style="font-size: 15px;align-items: center;"><b>Pincode Selection Page</b></ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+<!--  <ion-grid>
+    <ion-row>
+
+      <ion-list>
+
+
+          <ion-col size="7">
+            <ion-item>
+            <ion-list-header >
+              <ion-label margin-left="-10px;" class="registerpageitems" >Pincode</ion-label>  <span class="span" >&nbsp;*</span>
+            </ion-list-header>
+            </ion-item>
+          </ion-col>
+
+
+          <ion-col size="5">
+            <ion-item>
+            <ion-select  [(ngModel)]="list" (ionChange)="onChange(list)">  &lt;!&ndash;[compareWith]="compareWith"&ndash;&gt;
+              <ion-select-option *ngFor="let list of PincodePopoverPage;let i=index">{{list}}</ion-select-option>
+            </ion-select>
+              </ion-item>
+          </ion-col>
+
+      </ion-list>
+
+    </ion-row>
+  </ion-grid>-->
+
+  <ion-item style=" margin-top: 20px;">
+
+    <ion-label position="floating">Pincode <span style="color:red;">*</span></ion-label>
+
+    <ion-select [(ngModel)]="list" style="max-width: 100%;" required (ionChange)="onChange(list)">
+      <ion-select-option  *ngFor="let list of PincodePopoverPage; let i = index">{{list}}</ion-select-option>
+
+    </ion-select>
+
+  </ion-item>
+
+</ion-content>

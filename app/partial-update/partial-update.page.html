@@ -1,0 +1,85 @@
+<ion-content>
+
+
+  <ion-row align="center" style="margin-top: auto">
+    <ion-col col-1 size="1"></ion-col>
+    <ion-col col-10 size="10">
+      <h3 style="color: darkslateblue"><b>Commercial Details</b></h3>
+    </ion-col>
+    <ion-col col-1 size="1"></ion-col>
+  </ion-row>
+  <form style="border:  2px solid #ED3237;margin-top: 2%">
+
+
+    <ion-item>
+      <ion-label position="floating" >PAN Card No.<span style="color:red;">&nbsp;*</span></ion-label>
+      <ion-input [(ngModel)]="editData.cPAN" type="text" style="text-transform: uppercase;" name="cPAN" maxlength="10" autocapitalize="characters"></ion-input>
+    </ion-item>
+    <div *ngIf="cPanError == false" class="error" padding-left>
+      Invalid PAN Number.
+    </div>
+
+    <ion-item>
+      <ion-label position="floating" >GST No.<!--<span style="color:red;">&nbsp;*</span>--></ion-label>
+<!--
+      <ion-input [(ngModel)]="editData.cGSTNO" type="text" style="text-transform: uppercase;" name="cGSTNO" maxlength="15" autocapitalize="characters" ></ion-input>
+-->
+      <ion-input [(ngModel)]="editData.cGSTNO" type="text" style="text-transform: uppercase;" name="cGSTNO" maxlength="15" autocapitalize="characters"></ion-input>
+    </ion-item>
+    <div *ngIf="cGSTError == false" class="error" padding-left>
+      Invalid GST Number.
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Fss Lic. No.</ion-label>
+      <ion-input [(ngModel)]="editData.cFoodLicNo" type="text" style="text-transform: uppercase;" name="cFoodLicNo " maxlength="16" autocapitalize="characters"></ion-input>
+    </ion-item>
+
+    <h6 style="color: darkslateblue ; margin-top: 2%;margin-left: 5%"><b>Contact Person</b></h6>
+
+    <form margin="5px" style="border: 1px solid #ED3237;margin-top: 1%;">
+
+      <ion-item>
+        <ion-label position="floating">Name</ion-label>
+        <ion-input [(ngModel)]="editData.cContactPersonName" type="text" name="cContactPersonName"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Mobile No.</ion-label>
+        <ion-input [(ngModel)]="editData.cContactPersonMobileNo" type="tel" name="cContactPersonMobileNo"
+                   maxlength="10"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"> Email ID</ion-label>
+        <ion-input [(ngModel)]="editData.cContactPersonEMailID" name="cContactPersonEMailID"
+                   type="email"></ion-input>
+
+      </ion-item>
+      <div *ngIf="cEmailError == false" class="error" padding-left>
+        Invalid Email.
+      </div>
+
+    </form>
+
+    <!--  <ion-row>-->
+    <!--  <button ion-button  [disabled]="!isEnabledBtn"   class="createAccoutC" (click)="updateCommercial()">Update Commercial</button>-->
+    <!--  </ion-row>-->
+  </form>
+
+
+</ion-content>
+
+
+
+<footer padding class="footer">
+  <ion-row>
+    <ion-col align="right" col-8 size="8">
+      <span style="margin-right: 20px" (click)="updateCommercial()">UPDATE</span>
+    </ion-col>
+    <ion-col align="right" col-4 size="4">
+      <span (click)="submitData(success)">CANCEL</span>
+    </ion-col>
+  </ion-row>
+</footer>
+

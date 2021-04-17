@@ -1,0 +1,38 @@
+.TilesRow {
+  height: auto;
+}
+.Tiles_Colone {
+  background-color:white ;
+  color: #ED3237;
+}
+.Tiles_Coltwo {
+  border: 2px solid #ED3237;
+  background-color: #dddddd;
+}
+.Tiles_span_white {
+  font-size: 17px;
+  font-family:"Arial Narrow";
+}
+.Tiles_span_red {
+  text-align: center;
+  font-size: 17px;
+  font-family:"Arial Narrow";
+}
+.contentClass
+{
+  padding-top: 5px;
+}
+.OrderItemCount{
+  z-index: 999;
+  /* position: absolute; */
+  margin-top: inherit;
+  margin-right: 3px;
+  margin-left: -13px;
+  margin-bottom: 6px;
+  margin-top: -4px;
+  background-color: darkslateblue;
+  color: white;
+  padding: 1px;
+  font-size: 13px;
+  border: white solid 1px;
+}

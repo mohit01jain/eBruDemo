@@ -1,0 +1,104 @@
+<ion-header>
+
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+
+      <ion-back-button class="ionbackbutton" defaultHref="HomepagePage"></ion-back-button>
+
+
+    </ion-buttons>
+
+    <ion-title  class="toolbar-title" style="font-size: 15px;">  {{ledgerAcntName1}}  </ion-title>
+
+    <ion-buttons slot="end" style="margin-bottom: 10px;" >
+      <ion-button icon-only style="margin-right: 5px;" >
+        <ion-icon name="ios-share-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
+  </ion-toolbar>
+
+  <ion-row>
+    <ion-col>
+  <ion-text style="font-size: 15px; float:right;text-align: right;font-weight: bold;" align-items-end="true" align="right" >Opening Balance :  {{OpeningBalance}}</ion-text>
+    </ion-col>
+  </ion-row>
+<!--
+  <ion-text style="font-size: 15px;text-align: right;"> {{OpeningBalance}}</ion-text>
+-->
+
+
+  <ion-row style="background-color: #007069;height: 40px;color: white;font-size: small;" >
+    <ion-col col-2 size="2" style="font-size: 15px;margin-top: 5px;text-align: center;"float-right>
+      Date
+    </ion-col>
+    <ion-col col-4 size="4" style="margin-top: 5px;font-size: 12px;text-align: center;" float-right>
+    Particular
+    </ion-col>
+    <!--<ion-col col-2 size="2" style="margin-top: 5px;font-size: 12px;" float-right>
+      Type
+    </ion-col>-->
+    <ion-col col-4 size="4" style="margin-top: 5px;font-size: 12px;text-align: center;" float-right>
+      Vr.No.
+    </ion-col>
+    <!--<ion-col col-2 size="2" style="margin-top: 5px;font-size: 12px; text-align: center;" float-right>
+      Dr Amt
+    </ion-col>-->
+    <ion-col col-2 size="2" style="margin-top: 5px;font-size: 12px; text-align: center;" float-right>
+      Amount
+    </ion-col>
+
+
+  </ion-row>
+
+</ion-header>
+
+
+  <!--<ion-label float-right text-wrap>
+    {{ledgerResultModel.OpeningBalance}}        </ion-label>-->
+
+<ion-content >
+
+
+
+  <ion-card *ngFor="let data of ledgerResultModel1;let i=index">
+<!--
+   <div *ngFor="let sabbath of data;let j=index">
+-->
+    <ion-row style="font-size: small;" >
+
+      <ion-col col-2 size="2" float-right style="color:black;text-align: center;">
+        <span> {{data.ATrnDate| date: 'dd/MM'}}</span>
+                      <!--aTrnDate-->
+      </ion-col>
+      <ion-col col-4 size="4" float-right style="color:black;text-align: center;">
+        <span> {{data.AcntName}}</span>
+      </ion-col>
+      <!--<ion-col col-2 size="2" float-right style="color:black;">
+        <span> {{data.AtrnTypeText}}</span>
+      </ion-col>-->
+
+      <ion-col col-2 size="4" float-right style="color:#11db83;text-align: center;" >
+        <span> {{data.VoucherNo}}</span>
+      </ion-col>
+      <ion-col col-2 size="2" float-right style="color:#11db83;text-align: center;" >
+        <span> {{data.DebitAmount }}</span>
+      </ion-col>
+      <!--<ion-col col-2 size="2" float-right style="color:#11db83;text-align: center;" >
+        <span> {{data.CreditAmount | number :'1.2-2'}}</span>
+      </ion-col>-->
+
+    </ion-row>
+<!--
+  </div>
+-->
+  </ion-card>
+  <hr/>
+
+
+  <ion-text style=" font-size: 15px;text-align: right;font-weight: bold;" float-right> Closing Balance : {{ClosingBalance}} </ion-text>
+
+
+
+</ion-content>

@@ -1,0 +1,120 @@
+<ion-app>
+<ion-header>
+
+    <ion-toolbar color="secondary">
+
+      <ion-buttons slot="start">
+
+        <!--
+                        <ion-back-button class="ionbackbutton" ></ion-back-button>
+        -->
+        <ion-back-button class="ionbackbutton" defaultHref="HomepagePage"></ion-back-button>  <!--;page=itemList-->
+
+      </ion-buttons>
+
+        <!--    <img src="assets/icon/xxxhdpi-w.PNG" style="width: 45px;height: 45px;float: right;border-radius: 10px;margin-left: 5px;margin-top: 3px">-->
+        <!--<ion-title>Admin Dashboard</ion-title>-->
+        <ion-title align="center" margin-top margin-bottom><span
+                style="font-size: 16px">Customer Registration List</span></ion-title>
+
+        <!--<ion-title>Customer Registration List</ion-title>-->
+    </ion-toolbar>
+
+
+</ion-header>
+
+
+  <ion-content>
+    <ion-input style="margin-top: -26px;"></ion-input>
+    <ion-label style="margin-left:2%;  !important;"><b>How do you want to Search Customers ?</b></ion-label>
+
+
+
+
+    <div >
+      <ion-list >
+        <ion-radio-group style="margin-top:-10px;">  <!--class="abcde"-->
+          <ion-row >   <!--class="abcde1"-->
+          <ion-col >
+            <ion-item style="padding-left:4px;" no-lines>
+              <ion-radio item-left style="margin: 11px 11px 10px 4px;" value="1" (ionSelect)="searchBy('1')" checked="true" ></ion-radio>
+              <ion-label style="font-size: 13px">By Mobile Number</ion-label>
+            </ion-item>
+          </ion-col>
+
+          <ion-col  style="margin-left: -20px">
+
+            <ion-item style="padding-left:4px;" no-lines>
+              <ion-radio item-left style="margin: 11px 11px 10px 4px;" value="2" (ionSelect)="searchBy('2')" checked="true"></ion-radio>
+              <ion-label style="font-size: 13px"> Date Wise Search</ion-label>
+            </ion-item>
+          </ion-col>
+
+        </ion-row>
+      </ion-radio-group>
+      </ion-list>
+
+      <div *ngIf="selectDate == true" class="error">
+        <ion-row style="margin-top: -19px;">
+          <ion-col col-6 size="6" >
+            <ion-item style="padding-left: 6px;">
+              <ion-label position="stacked" color="primary">From Date</ion-label>
+              <!--<ion-input type="date" [(ngModel)]="fromDate" (input)="searchByfromDate()"></ion-input>-->
+              <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="fromDate" (ngModelChange)="searchByfromDate()" placeholder="MM/DD/YYYY"></ion-datetime>
+            </ion-item>
+          </ion-col>
+          <ion-col col-6 size="6">
+            <ion-item>
+              <ion-label position="stacked" color="primary">Upto Date</ion-label>
+              <!--<ion-input type="date" [(ngModel)]="toDate" (input)="searchBytoDate()"></ion-input>-->
+              <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="toDate" (ngModelChange)="searchBytoDate()" placeholder="MM/DD/YYYY"></ion-datetime>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </div>
+
+    </div>
+    <div style="background-color: #f4f4f4;text-align: center" *ngIf="selectDate == false">
+      <ion-row>
+        <ion-col  >
+          <ion-searchbar  animated="true" autocomplete="on" (ionInput)="searchCustomer($event)"   >
+          </ion-searchbar>
+        </ion-col>
+      </ion-row>
+    </div>
+
+
+ <!--   <ion-card *ngFor="let data of listResult; let i = index">
+      <ion-item >
+        <h2  text-wrap><b>{{data.Name}}</b></h2>
+        <div><span style="font-size: 15px;">+91-{{data.MobileNo}}</span></div>
+        <div><a><span style="font-size: 15px;">{{data.Email}}</span></a></div>
+        <div><span style="font-size: 13px;" text-wrap *ngIf="data.Address1 != '' || data.Address2 !=''">{{data.Address1}},{{data.Address2}}</span></div>
+        <div><span style="font-size: 13px;margin-top:-10px" *ngIf="data.City != '' || data.StateName !=null">{{data.City}},{{data.StateName}} - {{data.Pincode}}</span></div>
+        <div><span style="font-size: 13px;margin-top:-10px;color: darkgray" >Added On : {{data.CreatedDate | date: 'dd/MM/yyyy hh:mm:ss'}}</span></div>
+      </ion-item>
+    </ion-card>-->
+
+
+    <ion-card *ngFor="let data of listResult; let i = index">
+      <ion-card-content >
+        <ion-label><b>{{data.Name}}</b></ion-label><br>
+        <ion-label>+91-{{data.MobileNo}}</ion-label><br>
+        <!--<ion-label> {{data.Email}}</ion-label><br>-->
+        <span *ngIf="data.Address1 != '' || data.Address2 !=''"><ion-label>{{data.Address1}},{{data.Address2}}</ion-label></span><br>
+        <span *ngIf="data.City != '' || data.StateName !=null"><ion-label>{{data.City}},{{data.StateName}} - {{data.Pincode}}</ion-label></span><br>
+        <span><ion-label>Added On : {{data.CreatedDate | date: 'dd/MM/yyyy hh:mm:ss'}}</ion-label></span><br>
+      </ion-card-content>
+    </ion-card>
+
+
+
+<!--    <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+      <ion-infinite-scroll-content
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>-->
+
+  </ion-content>
+</ion-app>

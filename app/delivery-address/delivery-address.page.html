@@ -1,0 +1,119 @@
+ <ion-header >  <!--color="secondary"-->
+
+        <ion-toolbar color="secondary">
+
+            <ion-buttons slot="start">
+
+<!--
+                <ion-back-button class="ionbackbutton" ></ion-back-button>
+-->
+                <ion-back-button class="ionbackbutton" defaultHref="cart;page=itemList"></ion-back-button>  <!--;page=itemList-->
+
+            </ion-buttons>
+
+            <!--<ion-buttons slot="start">
+
+                <ion-back-button class="ionbackbutton" defaultHref="HomepagePage"></ion-back-button>
+
+
+            </ion-buttons>-->
+
+
+            <ion-title style="font-size: small">BHIKARAM UDYOG</ion-title>
+
+        </ion-toolbar>
+
+    </ion-header>
+
+
+    <ion-content padding class="deliveryadd">
+
+
+        <ion-label class="lb_deliver"  (click)="openNewAddressPopup()"><b>+ Add New Address</b></ion-label>
+
+
+        <ion-list>
+            <ion-radio-group [(ngModel)]="selectedAddress" *ngFor="let data of addressesList; let i = index">
+
+
+                <ion-card *ngIf="i > 0">
+
+                    <ion-row>
+
+                        <ion-col col-1 size="1" sizeMd="1" sizeSm="1" sizeXl="1" sizeLg="1"   >
+                            <ion-radio [value]="data.ShippingId" (ionSelect)="showNewAddress(i,data)"></ion-radio>
+                        </ion-col>
+
+                        <ion-col col-7 size="7" sizeMd="7" sizeSm="7" sizeXl="7" sizeLg="7"
+                                 class="reg_address_col"><b>{{data.ContactPerson}}</b>
+
+                            <ion-row *ngIf="i > 0">
+                                <span class="reg_address_col">{{data.Add1}} , {{data.Add2}} , {{data.Add3}}</span>
+                            </ion-row>
+
+                            <ion-row *ngIf="i > 0">
+                                <span class="reg_address_col">{{data.City}}</span>
+                            </ion-row>
+
+
+                            <ion-row *ngIf="i > 0">
+                                <span class="reg_address_col">{{data.StateName}} , {{data.Zip}}</span>
+                            </ion-row>
+
+
+                            <ion-row *ngIf="i > 0">
+                                <span class="reg_address_col">{{data.MobileNo}}</span>
+                            </ion-row>
+
+                        </ion-col>
+
+                        <ion-col col-2 size="2" sizeMd="2" sizeSm="2" sizeXl="2" sizeLg="2"   *ngIf="i > 0"> <!--sizeMd="3.5"-->
+                            <div class="btn_edit"  (click)="openEditPopup(i,data)">
+
+
+
+                                <ion-icon name="create" tooltip="Edit"  ></ion-icon>
+                            </div>
+                        </ion-col>
+                        <ion-col col-2 size="2" sizeMd="2" sizeSm="2" sizeXl="2" sizeLg="2" *ngIf="i > 1">
+                            <div class="btn_delete" (click)="presentConfirm(i,data)">
+                                <ion-icon name="trash"></ion-icon>
+                            </div>
+                        </ion-col>
+
+                    </ion-row>
+
+
+                </ion-card>
+            </ion-radio-group>
+        </ion-list>
+
+
+    </ion-content>
+
+    <ion-footer>
+        <ion-toolbar>
+
+            <ion-row>
+
+                <ion-col size="12"  >
+
+
+            <ion-buttons  *ngIf="pageName == 'itemList'" >
+                <ion-button  style="background-color:#ED3237;width: 100%;line-height: 3;color: #ffffff;" *ngIf="visibility == true" (click)="presetConfirm()">
+                    Confirm Order
+                </ion-button>
+            </ion-buttons>
+
+            <ion-buttons *ngIf="pageName == 'pendingOrder'">
+                <ion-button style="background-color:#ED3237;width: 100%;line-height: 3;color: #ffffff;" *ngIf="visibility == true" class="btnCnfirm" (click)="presetConfirm()">
+                    Confirm Update
+                </ion-button>
+            </ion-buttons>
+
+                </ion-col>
+
+            </ion-row>
+
+        </ion-toolbar>
+    </ion-footer>

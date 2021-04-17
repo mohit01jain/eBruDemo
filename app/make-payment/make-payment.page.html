@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+
+    <ion-buttons slot="start">
+
+      <ion-back-button class="ionbackbutton" defaultHref="cart;page=itemList"></ion-back-button>  <!--;page=itemList-->
+
+    </ion-buttons>
+
+
+    <ion-title style="font-size: small">BHIKARAM UDYOG</ion-title>
+
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="welcome-card">
+    <ion-img src="https://d1.awsstatic.com/case-studies/logo-razorpay-600.541d42a59dbc22dc1a6545360b610a01bd2450ad.jpg" style="height: 200px;"></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>Get Started</ion-card-subtitle>
+      <ion-card-title>Razorpay Sample</ion-card-title>
+      <ion-row>
+        <ion-col>
+          Total Payment
+        </ion-col>
+        <ion-col>
+          {{currencyIcon}}{{paymentAmount}}
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="full" color="success" (click)="payWithRazor()">Pay with RazorPay</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+
+</ion-content>

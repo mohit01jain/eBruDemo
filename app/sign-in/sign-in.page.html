@@ -1,0 +1,71 @@
+
+
+<ion-content padding>
+
+  <ion-row class="class_row">   <!--style="margin-bottom: 10px"-->
+    <ion-col>
+      <img class="imageSignUp" src="assets/imgs/eBRU_revised.jpg">
+    </ion-col>
+  </ion-row>
+  <form (ngSubmit)="userLogin()">
+
+
+    <ion-item *ngIf="emailIDVisible == false">
+      <ion-label position="floating">Mobile No.</ion-label>
+      <ion-input type="tel" maxlength="10" autocomplete="on" name="userName"
+                 [(ngModel)]="loginData.userName"
+                 required></ion-input>
+    </ion-item>
+
+    <ion-item *ngIf="emailIDVisible == true">
+      <ion-label position="floating">Email ID</ion-label>
+      <ion-input autocomplete="on" name="userName" [(ngModel)]="loginData.userName" pattern="Email"
+                 required></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating">Password </ion-label>
+      <ion-input autocomplete="on" type="{{type}}" name="password"  [(ngModel)]="loginData.userPassword" required
+                 pattern="Password"></ion-input>
+
+      <ion-button *ngIf="!showPass" color="white" fill="false"  type="button" (click)="showPassword()"   slot="end"
+                  >
+        <ion-icon margin-top large name="eye-off" color="dark" ></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="showPass"  color="white" fill="false"  type="button"  (click)="showPassword()"  slot="end"
+                    >    <!--slot="right"   fill="clear"   -->
+
+        <ion-icon margin-top large name="eye"  color="dark"   ></ion-icon>
+
+      </ion-button>
+
+    </ion-item>
+
+
+    <ion-row >
+      <ion-col sizeXs="5" sizeLg="4" sizeMd="4"  sizeSm="5" sizeXl="4" size class="class_ioncol">  <!--style="padding: 17px;"-->
+        <ion-checkbox  color="dark" (click)="rememberMe()"></ion-checkbox>
+        <ion-text class="text_aftercheckbox" > Remember Me</ion-text>    <!--style="font-size: 13px;"-->
+      </ion-col>
+
+      <ion-col sizeXs="2" sizeLg="4" sizeMd="4" sizeSm="2" sizeXl="4"></ion-col>
+      <!-- <ion-col col-6 size="6">
+         <p style="font-size: 13px;"> Remember Me</p>
+       </ion-col>-->
+      <ion-col  sizeXs="5" sizeLg="4" sizeMd="4" sizeSm="5" sizeXl="4" class="class_ioncol1" style="margin-right: 0px;padding-left: 0px;"  (click)="ForgotPassword()">
+        <p class="forgotpassword" item-right="true"><a class="forgotpassword2"  > Forgot Password?</a></p>
+      </ion-col>  <!-- item-right="true" slot="end"-->
+    </ion-row>
+
+    <ion-button expand="full" size="small" color="red" class="createAccout" type="submit">Sign In
+    </ion-button>
+  </form>
+</ion-content>
+<ion-footer>
+  <ion-toolbar >
+    <p class="notaMember">Not a member? <a class="gotocreat" (click)="gotoCreateAccount()">Create
+      Account</a></p>
+  </ion-toolbar>
+</ion-footer>
+

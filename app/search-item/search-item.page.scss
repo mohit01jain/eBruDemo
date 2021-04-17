@@ -1,0 +1,298 @@
+
+ion-searchbar {
+  input::placeholder {
+    color: darkblue !important;
+  }
+}
+
+.headName {
+  font-size: medium;
+}
+
+.colPadding
+{
+  padding: 3px;
+}
+
+
+  .item_title {
+    color: lightgray;
+
+  }
+
+  .content_popup {
+    width: 80%;
+  }
+
+  .circleButton {
+    height: 1.6rem;
+    float: right;
+    margin-top: -1px;
+    margin-left: 10px;
+    background: transparent;
+  }
+
+  .pClass {
+    margin-top: 6.5%;
+  }
+
+  .md-button {
+    margin-left: 4%;
+    height: 2rem;
+  }
+
+  .circleButton {
+    height: 1.6rem;
+    float: left;
+    margin-top: 14%;
+    margin-left: -3%;
+  }
+
+  [col-8] {
+    //margin-top: 1%;
+  }
+
+  .rowItme {
+    //padding-left: 2%;
+    margin-top: 12%;
+  }
+
+  .item_rate {
+    margin-top: 6px;
+  }
+
+  .imageVisisble {
+    margin-bottom: -5%;
+  }
+
+  .hideShow {
+    margin-left: -23%;
+  }
+
+  ion-spinner {
+    position: relative;
+    display: inline-block;
+    width: 28px;
+    height: 65px;
+
+  }
+
+  ion-spinner svg {
+    stroke: yellow;
+    fill: white;
+  }
+
+  .increment_btn {
+    color: grey;
+    font-size: 1.3em;;
+    height: 2.2rem;
+    float: right;
+    margin: 0px 2px 0px 0px;
+
+  }
+
+  .md-button {
+    float: right;
+    height: 2rem;
+    width: 0px;
+    margin: 0px -4px 0 0;
+
+  }
+
+  .decrement_btn {
+    color: grey;
+    font-size: 1.3em;;
+    height: 2.2rem;
+    float: right;
+    margin: 4px 2px 0px 0px;
+
+  }
+
+  .pClass {
+
+
+  }
+
+  .md-button {
+    float: right;
+    height: 2rem;
+    width: 0px;
+    margin: 2px 1px 0 -1px;
+
+  }
+
+  .circleButton {
+    height: 1.6rem;
+    float: left;
+
+  }
+
+  [col-8] {
+    //margin-top: 1%;
+  }
+
+  .rowItme {
+    margin-top: -30px;
+  }
+
+  .custom-popover .popover-content {
+    width: 60%;
+  }
+
+  .increment_btn {
+    color: grey;
+    font-size: 15px;
+    font-family: Calibri;
+    float: right;
+    margin: -35px 6px 0px 0px;
+  }
+
+  .incrementCol {
+    margin: auto;
+  }
+
+  .decrement_btn {
+    color: grey;
+    font-size: 15px;
+    font-family: Calibri;
+    float: right;
+    margin: 13px 6px 0px 6px;
+
+  }
+
+  .item_image {
+    padding: 0;
+    margin: 0;
+    height: 200px;
+  }
+
+  .itemName {
+    margin-top: 2px;
+    color: #483d8b;
+    font-weight: bold;
+    font-size: small;
+  }
+
+  ion-footer {
+    height: 6%;
+  }
+
+  .footer_btn {
+    color: #e07917;
+    margin-top: 5px;
+  }
+
+  .OrderItemCount {
+    z-index: 999;
+    /* position: absolute; */
+    margin-top: inherit;
+    margin-right: 3px;
+    margin-left: -13px;
+    margin-bottom: 6px;
+    margin-top: -4px;
+    background-color: darkslateblue;
+    color: white;
+    padding: 1px;
+    font-size: 15px;
+    font-family: Calibri;
+    border: white solid 1px;
+  }
+
+  .usernameheader {
+    z-index: 999;
+    /* position: absolute; */
+    margin-right: 3px;
+    margin-left: -37px;
+    margin-bottom: 10px;
+    margin-top: 45px;
+    color: black;
+    font-family: Calibri;
+    font-size: 15px;
+    border: white solid 1px;
+  }
+
+  .homeContent {
+    background: rgba(89, 254, 60, 0.08);
+  }
+
+  .quantText {
+    border: 2px grey solid;
+    width: 90%;
+    text-align: center;
+    background-color: white;
+
+  }
+
+  .QtyRow {
+    font-size: x-small;
+    color: green;
+
+  }
+
+  .QtyRow100 {
+    font-size: x-small;
+    color: green;
+
+  }
+
+  .QtyRow500 {
+    font-size: x-small;
+    color: green;
+
+
+  }
+
+  .QtyRowRE {
+    font-size: x-small;
+    color: green;
+    margin-top: 6px;
+
+  }
+
+  .listDiv {
+    border: 1px solid #483d8b;
+  }
+
+  ion-searchbar {
+    input::placeholder {
+      color: darkblue !important;
+    }
+  }
+
+  .mrpRate {
+    text-decoration: line-through;
+    color: red;
+    font-size: small;
+
+  }
+
+  .ourRate {
+    color: darkgray;
+    margin-left: 1px;
+    font-size: small;
+  }
+
+  .off {
+    color: orangered;
+    font-size: small;
+  }
+
+  .addBasket {
+    margin-top: 2%;
+  }
+
+  .mrpText {
+    font-size: x-small;
+  }
+
+  .qtyStock {
+    margin-top: 2%;
+  }
+  .maxQty {
+    color: red;
+    font-size: small;
+  }
+
+.listDiv {
+  border: 1px solid #483d8b;
+}

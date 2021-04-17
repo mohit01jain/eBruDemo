@@ -1,0 +1,103 @@
+<ion-header>
+
+  <ion-toolbar  color="secondary">
+    <!--    <img src="assets/icon/xxxhdpi-w.PNG" style="width: 45px;height: 45px;float: right;border-radius: 10px;margin-left: 5px;margin-top: 3px">-->
+    <!--<ion-title>Admin Dashboard</ion-title>-->
+    <ion-buttons slot="start">
+
+      <ion-back-button class="ionbackbutton" defaultHref="HomepagePage"></ion-back-button>
+
+    </ion-buttons>
+
+      <ion-title align="center" margin-top margin-bottom><span style="font-size: 16px">
+      View Bill</span></ion-title>
+
+    <!--<ion-title>View Bill</ion-title>-->
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding style="background-color: #f2f2f2">
+
+  <ion-card class="pending_details" *ngFor="let data of billList; let i = index" (click)="viewBillDetail(data,data.BillNo)">
+    <ion-row style="background-color:#ffd71c;color: white;" *ngIf="userType == 2">
+      <!--<ion-row style="background-color:#007DC3;color: #7FC730;" *ngIf="userType == 2">-->
+      <ion-col align="center">
+        <span><b>{{data.PartyName}}</b></span>
+      </ion-col >
+    </ion-row>
+    <ion-row>
+      <ion-col class="heading_col" col-3 size="3">
+        Bill No.
+      </ion-col>
+      <ion-col col-1></ion-col>
+      <ion-col class="heading_col" col-4 size="4">
+        Bill Date
+      </ion-col>
+      <ion-col col-1 size="1"></ion-col>
+
+      <ion-col class="heading_col" col-3 size="3">
+        Amount
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="content_col" col-3 size="3">
+        {{data.BillNo}}
+      </ion-col>
+      <ion-col col-1 size="1"></ion-col>
+      <ion-col class="content_col" col-4 size="4">
+        <span>{{data.ItrnDate | date: 'dd/MM/yyyy'}}</span>
+        <!--{{data.OrderDate}}-->
+      </ion-col>
+      <ion-col col-1></ion-col>
+
+      <ion-col class="content_col" col-3 size="3">
+        &#8377;{{data.NetAmount}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12 *ngIf="data.OrderStatus == 1">
+
+        <ion-buttons class="confirm_btn" style="background-color: orange;color: white">
+          <b>Fully Pending</b>
+        </ion-buttons>
+
+      </ion-col> <ion-col col-12 *ngIf="data.OrderStatus == 2">
+
+      <ion-buttons class="confirm_btn" style="background-color: lightgreen;color: white;">
+        <b>Partially Pending</b>
+      </ion-buttons>
+
+    </ion-col>
+      <ion-col col-12 *ngIf="data.OrderStatus == 3" size="12">
+
+        <ion-buttons class="confirm_btn" style="background-color: #00b000;color: white">
+          <b>Compeleted</b>
+        </ion-buttons>
+
+      </ion-col>
+      <ion-col col-12 *ngIf="data.OrderStatus == 4" size="12">
+
+        <ion-buttons class="confirm_btn" style="background-color: red;color: white">
+          <b>Cancelled</b>
+        </ion-buttons>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12 size="12" class="delivery_time">
+        Delivery <span>{{data.OrderDeliveryDate | date: 'dd/MM/yyyy'}}</span> {{data.DeliveryTimeSlotDesc}}
+      </ion-col>
+    </ion-row>
+  </ion-card><hr/>
+
+  <!--<ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>-->
+</ion-content>

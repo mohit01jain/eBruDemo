@@ -1,0 +1,686 @@
+<ion-app>
+    <!-- <ion-header>
+         <ion-toolbar color="secondary">
+             <ion-buttons slot="start">
+                 <ion-menu-button autoHide="false"></ion-menu-button>
+
+             </ion-buttons>
+
+             <ion-title class="headclass" style="font-size: small">BHIKARAM UDYOG</ion-title>
+         </ion-toolbar>
+     </ion-header>-->
+    <ion-header class="ioncontentfirst">
+        <ion-toolbar color="secondary">
+            <!--<ion-buttons slot="start">
+
+                &lt;!&ndash;
+                                <ion-back-button class="ionbackbutton" ></ion-back-button>
+                &ndash;&gt;
+                <ion-menu-button autoHide="false"></ion-menu-button>  &lt;!&ndash;;page=itemList&ndash;&gt;
+
+            </ion-buttons>-->
+
+            <ion-buttons slot="start">
+
+                <!--
+                                <ion-back-button class="ionbackbutton" ></ion-back-button>
+                -->
+                <ion-back-button class="ionbackbutton" defaultHref="home"></ion-back-button>  <!--;page=itemList-->
+
+            </ion-buttons>
+
+            <ion-title class="headName"><b>{{companyName}}</b></ion-title>
+
+
+        </ion-toolbar>
+
+
+    </ion-header>
+
+    <ion-content class="ioncontentfirst">  <!--color="tertiary"-->
+        <div class="ioncontentfirst">
+
+
+            <div class="class1">
+                <ion-label style="float: left;margin-left:10px;color: black;font-weight: bold">
+                    ITEMS ({{itemCount}})
+                </ion-label>
+                <ion-label class="class2">Total : <span style="color: black;font-weight: bold">
+    Rs.{{totalPayableAmount | number :'1.2-2'}}
+    </span>
+                </ion-label>
+            </div>
+
+            <div *ngIf="pageNAme == 'itemList'">
+                `
+                <ion-row>
+                        <ion-col size="12" sizeXl="3" sizeLg="4" sizeMd="6" *ngFor="let data of addData; let i = index">
+
+                        <ion-card>
+
+
+                            <ion-item *ngFor="let item of data.ItemPackagingList; let i = index">
+
+                                <!--
+                                                                <ion-col sizeSm="1" sizeXl="2" sizeLg="3" sizeMd="4">
+                                -->
+
+
+                                <ion-row>
+                                    <ion-col col-4 size="4"
+                                             style="border-right: 1px solid #483d8b">
+                                        <img style="width: 100%;height:80px;margin-top:35px;margin-left: -8px;"
+                                             src="https://api.tabserp.com/{{item.ItemImageList[0].ImageUrl}}">
+                                    </ion-col>
+                                    <ion-col col-8 size="8">
+                                        <ion-icon (click)="presentRemoveItem(data)" float-end class="cancelItem"
+                                                  name="close">
+                                        </ion-icon>
+
+                                        <div style="margin-left: 2px;">
+                                            <!--   <h3 style="color: #483d8b;" text-wrap>--><span
+                                                style="font-size: small;margin-left: 0px;color: #483d8b;"><b>{{data.Name}}</b></span>
+                                            <!--</h3>-->
+
+                                            <div align="center">
+                                                <ion-row>
+                                                    <ion-col col-3 size="3" size="3" size="3">
+                                                        <span style="font-size: small;margin-left: -19px;color: #483d8b;"><b>Qty : </b>  </span>
+                                                    </ion-col>
+                                                    <ion-col col-2 size="2" align="center">
+                                                        <!--sizeSm="0.33" sizeXl="0.66" sizeLg="1" sizeMd="1.33"-->
+                                                        <img style="width: auto;height: auto; margin-top: 10%;"
+                                                             class="img-responsive"
+                                                             src="assets/icon/negative-sign-inside-circle-less.png"
+                                                             (click)="increment(i,item.SaleRate,data, -1)">
+                                                    </ion-col>
+                                                    <ion-col col-3 size="3" size="3" align="center" size="3">
+                                                        <input type="tel" maxlength="5" class="quantText"
+                                                               style="font-size: medium"
+                                                               [(ngModel)]="item.Quantity"
+                                                               (blur)="updateQuantity(item.Quantity,i,data)"
+                                                               disabled>
+                                                    </ion-col>
+                                                    <ion-col col-2 size="2" align="center">
+                                                        <!--sizeSm="0.33" sizeXl="0.66" sizeLg="1" sizeMd="1.33"-->
+                                                        <img style="width:auto ;height: auto;margin-top: 10%;"
+                                                             src="assets/icon/plus-button-icon.png"
+                                                             (click)="increment(i,item.SaleRate,data, 1)">
+                                                    </ion-col>
+
+                                                </ion-row>
+
+
+                                                <ion-row padding-right="0px">
+
+
+                                                    <ion-col align="center" class="QtyRow" col-2 size="2"
+                                                             *ngIf="visibleTen==true"
+                                                             (click)="increment(i,item.SaleRate,data, 10)">
+                                                        <span><b>+10</b></span></ion-col>
+                                                    <ion-col align="center" class="QtyRow100" col-2 size="3"
+                                                             *ngIf="visibleHun==true"
+                                                             (click)="increment(i,item.SaleRate,data, 100)">
+                                                        <span><b>+100</b></span></ion-col>
+                                                    <ion-col align="center" class="QtyRow500" col-2 size="3"
+                                                             *ngIf="visibleFiv==true"
+                                                             (click)="increment(i,item.SaleRate,data, 500)">
+                                                        <span><b>+500</b></span></ion-col>
+                                                    <ion-col align="center" class="QtyRow" col-3 size="3" size="3"
+                                                             *ngIf="visibleTho==true"
+                                                             (click)="increment(i,item.SaleRate,data, 1000)">
+                                                        <span><b>+1000</b></span>
+                                                    </ion-col>
+                                                    <ion-col align="center" class="QtyRowRE" col-2 size="3"
+                                                             *ngIf="visibleTho==true"
+                                                             (click)="increment(i,item.SaleRate,data, 0)">
+                                                        <span><b>Reset </b></span></ion-col>
+
+
+                                                </ion-row>
+
+
+                                                <ion-row *ngIf="item.Quantity > item.ClosingStock">
+                                                    <ion-col col-12 size="12">
+                                                        <span class="maxQty">Max Qty Possible : {{item.ClosingStock}}</span>
+                                                    </ion-col>
+                                                </ion-row>
+
+                                                <ion-row class="itemSaleRate">
+                                                    <ion-col align="center" col-6 size="6">
+  <span style="margin-top: 2px"><b>
+
+    Rs. {{item.SaleRate | number :'1.2-2'}}
+    </b>
+  </span>
+                                                    </ion-col>
+                                                    <ion-col align="center"
+                                                             *ngIf="item.Quantity > item.ClosingStock"
+                                                             col-6 size="6"
+                                                             size="6" size="6">
+                                                        <span class="maxQtystk">( Ltd Stock )</span>
+                                                    </ion-col>
+
+                                                </ion-row>
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </ion-col>
+                                </ion-row>
+
+                                <!--
+                                                                </ion-col>
+                                -->
+
+                            </ion-item>
+
+
+                        </ion-card>
+
+                    </ion-col>
+
+                </ion-row>
+
+
+            </div>
+
+
+            <div *ngIf="pageNAme == 'pendingOrder'">
+                `
+                <ion-card *ngFor="let data of pendingAddData; let i = index">
+                    <ion-item *ngFor="let item of data.ItemPackagingList; let i = index">
+                        <img style="width: 30%;height:100px; margin:auto;"
+                             src="https://api.tabserp.com/{{item.ItemImageList[0].ImageUrl}}">
+
+
+                        <div>
+
+                            <h2 style=" color: #483d8b;" text-wrap><b>{{data.Name}}</b></h2>
+
+                            <div style="margin-top: 5px" align="center">
+                                <ion-row>
+                                    <ion-col col-3 size="3">
+                                        <span style="font-size: small;margin-left: -19px;color: #483d8b;"><b>Qty : </b>  </span>
+                                    </ion-col>
+                                    <ion-col col-2 size="2" align="center">
+
+                                        <img style="width: 100%;height: 100%;"
+                                             src="assets/icon/negative-sign-inside-circle-less.png">
+                                    </ion-col>
+                                    <ion-col col-3 size="3" align="center">
+                                        <input type="tel" maxlength="3" class="quantText" [(ngModel)]="item.Quantity"
+                                               (blur)="updateQuantity(item.Quantity,i,data)" disabled>
+                                    </ion-col>
+                                    <ion-col col-2 size="2" align="center">
+
+                                        <img style="width: 100%;height: 100%;" src="assets/icon/plus-button-icon.png">
+                                    </ion-col>
+                                </ion-row>
+
+
+                            </div>
+
+
+                            <div style="font-size: small;margin-top: 10px;color: #483d8b;">
+  <span><b>
+
+    Rs. {{item.SaleRate | number :'1.2-2'}}
+    </b>
+  </span>
+                            </div>
+
+                        </div>
+
+
+                    </ion-item>
+                </ion-card>
+            </div>
+
+            <div *ngIf="pageNAme == 'viewOrder'">
+                `
+                <ion-card *ngFor="let data of selectedOrderItems; let i = index">
+                    <ion-item *ngFor="let item of data.ItemPackagingList; let i = index">
+                        <img style="width: 30%;height:90px;margin:auto;"
+                             src="https://api.tabserp.com/{{item.ItemImageList[0].ImageUrl}}"/>
+
+
+                        <div>
+
+                            <h2 style="margin-top: 5px;margin-left: 5px;color: #483d8b;" text-wrap><b>{{data.Name}}</b>
+                            </h2>
+
+                            <div style="margin-top: 5px" align="center">
+                                <ion-row>
+                                    <ion-col col-3 size="3">
+                                        <span style="font-size: small;"><b>Qty : </b>  </span>
+                                    </ion-col>
+                                    <ion-col col-2 size="2" align="center">
+
+                                        <img style="width: 100%;height: 100%;"
+                                             src="assets/icon/negative-sign-inside-circle-less.png">
+                                    </ion-col>
+                                    <ion-col col-3 size="3" align="center">
+                                        <input type="tel" maxlength="3" class="quantText" [(ngModel)]="item.Quantity"
+                                               (blur)="updateQuantity(item.Quantity,i,data)" disabled>
+                                    </ion-col>
+                                    <ion-col col-2 size="2" align="center">
+
+                                        <img style="width: 100%;height: 100%;" src="assets/icon/plus-button-icon.png">
+                                    </ion-col>
+                                </ion-row>
+
+
+                            </div>
+
+
+                            <div style="font-size: small;margin-top: 10px;margin-left: 5px">
+  <span><b>
+
+    Rs. {{item.SaleRate | number :'1.2-2'}}
+    </b>
+  </span>
+                            </div>
+
+                        </div>
+
+
+                    </ion-item>
+                </ion-card>
+            </div>
+
+            <div *ngIf="pageNAme == 'viewBill'">
+                `
+                <ion-card *ngFor="let data of selectedOrderItems; let i = index">
+                    <ion-item *ngFor="let item of data.ItemPackagingList; let i = index">
+                        <img style="width: 30%;height:120px;margin:auto;"
+                             src="https://api.tabserp.com/{{item.ItemImageList[0].ImageUrl}}">
+
+
+                        <div>  <!--ngDefaultControl="true"-->
+
+                            <h2 style="margin-top: 5px" text-wrap><b>{{data.Name}}</b></h2>
+
+                            <div style="margin-top: 5px" align="center">
+                                <ion-row>
+                                    <ion-col col-3 size="3">
+                                        <span style="font-size: small;"><b>Qty : </b>  </span>
+                                    </ion-col>
+                                    <ion-col col-2 size="2" align="center">
+
+                                        <img style="width: 100%;height: 100%;"
+                                             src="assets/icon/negative-sign-inside-circle-less.png">
+                                    </ion-col>
+                                    <ion-col col-3 size="3" align="center">
+                                        <input type="tel" maxlength="3" class="quantText"
+                                               [(ngModel)]="item.Quantity"
+
+                                               (blur)="updateQuantity(item.Quantity,i,data)" disabled>
+                                        <!--ngDefaultControl-->
+                                    </ion-col>
+                                    <ion-col col-2 size="2" align="center">
+
+                                        <img style="width: 100%;height: 100%;" src="assets/icon/plus-button-icon.png">
+                                    </ion-col>
+                                </ion-row>
+
+
+                            </div>
+
+
+                            <div style="font-size: small;margin-top: 10px">
+  <span><b>
+
+    Rate {{item.SaleRate | number :'1.2-2'}}
+    </b>
+  </span>
+                            </div>
+
+                        </div>
+
+                        <ion-row>
+                            <ion-col col-12 size="12" float-end>
+                                <ion-buttons>
+                                    <button class="btnRemove" (click)="presentRemoveUpdateConfirm(data)">REMOVE</button>
+
+                                </ion-buttons>
+                            </ion-col>
+
+
+                        </ion-row>
+                    </ion-item>
+                </ion-card>
+            </div>
+
+
+            <ion-card>
+                <div class="ioncardwithcss">
+
+
+                    <ion-list>
+                        <ion-radio-group [(ngModel)]="selectAddress">
+                            <ion-item color="#A52A2A"
+                                      style=" height:40px; background-color:#A52A2A;margin-top: -7px; padding-top:-10px ; margin-bottom: 20px ;font-size: 13px;">
+                                <!--class="classionlabel"-->
+
+                                <ion-label color="#ffffff" style="color:#ffffff;">
+
+                                    <b>DELIVERY METHODS</b>
+
+                                </ion-label>
+                            </ion-item>
+
+
+                            <ion-item style="margin-bottom: -15px;margin-top: -15px">
+
+                                <ion-label style="font-size: 13px;height: 20px;margin-bottom:20px;">Pickup From Store
+                                </ion-label>
+                                <ion-radio class="form-radio" value="Pick from store"
+                                           (ionSelect)="selectedAddress('Pick from store')"
+
+
+                                ></ion-radio>
+                            </ion-item>
+
+
+                            <ion-item style="margin-bottom: -15px;margin-top: -5px">
+
+                                <ion-label style="font-size: 13px;margin-top: -5px;">Delivery @ Chosen Address
+                                </ion-label>
+                                <ion-radio class="form-radio" value="Select Address"
+                                           (ionSelect)="selectedAddress('Select Address')" checked="true"></ion-radio>
+                            </ion-item>
+
+                        </ion-radio-group>
+                    </ion-list>
+                </div>
+
+            </ion-card>
+
+
+            <div style="background-color: white;font-size: small;color: blue;margin: 10px;padding: 10px"
+                 *ngIf="visible == true && selectAddress == 'Select Address'">
+                <span style="color:#483d8b;font-size: small"> <b>Tip:</b></span>
+                Buy for Rs. {{morefreeDeliveryAmount | number :'1.2-2'}} or more for Free Delivery
+            </div>
+
+
+            <ion-row>
+                <ion-col col-1 size="1" style="padding: 17px;">
+                    <ion-checkbox #checkbox color="dark" (click)="cDetailspage()"></ion-checkbox>
+                </ion-col>
+                <ion-col col-6 size="6">
+                    <p style="font-size: 13px;"><b>Commercial Details</b></p>
+                </ion-col>
+            </ion-row>
+
+
+            <div style=" margin-top: 15px">
+                <ion-label style="margin-left: 10px"><b>Comments for Order</b></ion-label>
+            </div>
+
+            <ion-item no-lines style="margin-right: 10px;margin-left: 10px"
+                      *ngIf="pageNAme == 'itemList' && userType == 5">
+                <ion-input style="background-color: white;color: #000000;"
+                           placeholder="Any Suggestions" [(ngModel)]="orderSuggestion">
+                </ion-input>
+            </ion-item>
+
+            <ion-row *ngIf="pageNAme == 'pendingOrder' || 'TabOrderListPage'  && userType == 2 "
+                     style="height: 15%;background-color: white;margin-left: 10px;margin-right: 10px;">
+                <ion-col *ngIf="orderDescSuggestion == '' ">
+                    No Comments
+
+                </ion-col>
+                <ion-col *ngIf="orderDescSuggestion != '' ">
+      <span
+              style="background: white;color: #666666;margin-left: 10px;margin-right: 10px;">{{orderDescSuggestion}}</span>
+
+                </ion-col>
+            </ion-row>
+
+
+            <div style=" margin-top: 15px">
+                <ion-label style="margin-left: 10px"><b>BILL DETAILS</b></ion-label>
+            </div>
+
+            <div style="background-color: white;margin: 10px;padding: 10px">
+
+                <div>
+                    <span>Cart Total</span>
+
+                    <div style="float: right">
+                        <span>Rs. {{totalAmount | number :'1.2-2'}}</span>
+                    </div>
+                </div>
+
+
+                <div *ngIf="pageNAme == 'itemList' && this.isGSTApplicableExternally == true">
+
+                    <div *ngFor="let data of overheadList">
+                        <div *ngIf="data.taxRate > 0">
+                            <div *ngIf="sgstVisible == true">
+          <span>SGST <span
+                  style="color: red">({{data.taxRate}}% on {{data.amount | number :'1.2-2'}})</span></span>
+                                <div style="float: right;">
+                                    <span>{{data.overheadAmount | number :'1.2-2'}}</span>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div *ngIf="sgstVisible == true">
+          <span>CGST <span
+                  style="color: red">({{data.taxRate}}% on {{data.amount | number :'1.2-2'}})</span></span>
+                                <div style="float: right;">
+                                    <span>{{data.overheadAmount | number :'1.2-2'}}</span>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+
+
+                    <div *ngFor="let listItem of overheadList">
+                        <div *ngIf="listItem.taxRate > 0">
+                            <div *ngIf="igstVisible == true">
+          <span>IGST<span
+                  style="color: red">({{listItem.taxRate}}% on {{listItem.amount | number :'1.2-2'}})</span></span>
+                                <div style="float: right;">
+                                    <span>{{listItem.overheadAmount | number :'1.2-2'}}</span>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="pageNAme == 'pendingOrder' && this.isGSTApplicableExternally == true">
+
+                    <div *ngFor="let data of overheadPendingList">
+                        <div *ngIf="data.taxRate > 0">
+                            <div *ngIf="sgstVisible == true">
+          <span>SGST <span
+                  style="color: red">({{data.taxRate}}% on {{data.amount | number :'1.2-2'}})</span></span>
+                                <div style="float: right;">
+                                    <span>{{data.overheadAmount | number :'1.2-2'}}</span>
+                                </div>
+                            </div>
+                            <br>
+
+                            <div *ngIf="sgstVisible == true">
+          <span>CGST <span
+                  style="color: red">({{data.taxRate}}% on {{data.amount | number :'1.2-2'}})</span></span>
+                                <div style="float: right;">
+                                    <span>{{data.overheadAmount | number :'1.2-2'}}</span>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+
+
+                    <div *ngFor="let data of overheadPendingList">
+                        <div *ngIf="data.taxRate > 0">
+                            <div *ngIf="igstVisible == true">
+          <span>IGST<span
+                  style="   color: red">({{data.taxRate}}% on {{data.amount | number :'1.2-2'}})</span></span>
+                                <div style="float: right;">
+                                    <span>{{data.overheadAmount | number :'1.2-2'}}</span>
+                                </div>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span>Delivery Charge</span>
+                    <div style="float: right;">
+                        <span>+ Rs. {{deliveryCharge | number :'1.2-2' }}</span>
+                    </div>
+                </div>
+                <div *ngIf="discountRate >0">
+                    <span>Discount</span>
+                    <div style="float: right;">
+                        <span>- Rs. {{discountRate}}</span>
+                    </div>
+                </div>
+                <br *ngIf="discountRate >0">
+
+                <div *ngIf="roundofValue > 0">
+                    <span>RoundOff</span>
+                    <div style="float: right;">
+                        <span *ngIf="roundOffValueEnable == false">+ Rs. {{roundofValue | number :'1.2-2'}}</span>
+                        <span *ngIf="roundOffValueEnable == true">- Rs. {{roundofValue | number :'1.2-2'}}</span>
+                    </div>
+                </div>
+                <br *ngIf="roundofValue > 0">
+
+
+                <div style="color: #483d8b;">
+                    <span><b>Total Payable</b></span>
+                    <div style="float: right;">
+                        <span style="color: #483d8b"><b>Rs. {{totalPayableAmount | number :'1.2-2'}}</b></span>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+    </ion-content>
+
+
+    <ion-footer class="ioncontentfirst" style="elevation: above;padding: 2px">
+
+
+        <div *ngIf="pageNAme == 'pendingOrder' && userType == 5">
+            <ion-row>
+
+                <ion-col style="color:white;padding:10px;
+       background-color: #ED3237;border: 1px solid white;
+        text-align: center; " col-12 size="12" (click)="presentConfirm()">
+                    <button class="btnSubmit">
+                        CANCEL ORDER
+                    </button>
+                </ion-col>
+
+
+            </ion-row>
+        </div>
+
+        <div *ngIf="userType == 2 && pageNAme == 'viewOrder'">
+            <ion-row style="margin-bottom: 3px">
+
+
+                <ion-col style="color: white;padding:10px;
+       background-color:#ED3237;border: 1px solid white;
+        text-align: center; " col-12 size="12" (click)="presentConfirm()">
+                    <button class="btnSubmit">
+                        CANCEL ORDER
+                    </button>
+                </ion-col>
+
+            </ion-row>
+
+            <ion-row>
+
+                <ion-col style="color: #fff;padding:10px;
+       background-color: #483d8b;border: 1px solid white;
+        text-align: center; " col-6 size="6" (click)="printOrder()">
+                    <button class="btnSubmit">
+                        PRINT ORDER
+                    </button>
+                </ion-col>
+
+                <ion-col style="color: #fff;padding:10px;
+       background-color: #483d8b;
+        text-align: center;border: 1px solid white; " col-6 size="6" (click)="createBill()">
+                    <button class="btnSubmit">
+                        CREATE BILL
+                    </button>
+                </ion-col>
+
+            </ion-row>
+        </div>
+
+        <div *ngIf="userType == 2 && pageNAme == 'viewBill'">
+            <ion-row>
+
+                <ion-col style="color: #fff;padding:10px;
+       background-color:#483d8b;border: 1px solid white;
+        text-align: center; " col-6 size="6" (click)="saveBill()">
+                    <button class="btnSubmit">
+                        SAVE BILL
+                    </button>
+                </ion-col>
+
+                <ion-col style="color: #fff;padding:10px;
+       background-color:#483d8b;
+        text-align: center;border: 1px solid white; " col-6 size="6" (click)="PrintBill()">
+                    <button class="btnSubmit">
+                        PRINT BILL
+                    </button>
+                </ion-col>
+
+            </ion-row>
+        </div>
+
+
+        <ion-row>
+
+
+            <ion-col class="placeOrder"
+                     (click)="addMoreItem()" *ngIf="pageNAme == 'itemList' && userType == 5">
+                <button class="btnSubmit">
+                    SHOP MORE
+                </button>
+            </ion-col>
+
+            <ion-col col-6 size="6"
+                     *ngIf="pageNAme == 'itemList' && userType == 5 && selectAddress == 'Pick from store' ">
+
+                <button [disabled]="!isEnabledCr" (click)="presentPlaceOrderConfirm()" class="btnSubmit">
+
+                    PLACE ORDER
+                </button>
+            </ion-col>
+
+            <ion-col col-6 size="6"
+                     *ngIf="pageNAme == 'itemList' && userType == 5 && selectAddress == 'Select Address' ">
+
+                <button [disabled]="!isEnabledCr" (click)="placeOrder()" class="btnSubmit">
+
+                    PLACE ORDER
+                </button>
+            </ion-col>
+
+
+        </ion-row>
+
+    </ion-footer>
+</ion-app>

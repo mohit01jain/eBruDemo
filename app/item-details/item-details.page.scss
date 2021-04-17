@@ -1,0 +1,268 @@
+
+  .title_name{
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+  }
+  .item_name{
+    margin-left: 2%;
+    color: #3e4152;
+    font-weight: 700;
+    line-height: 1.5;
+    margin-bottom: 0;
+  }
+
+
+
+  .iontoolbar
+  {
+    height:35px;
+  }
+
+  .iconclass
+  {
+    margin-right: 20px;
+  }
+
+  .ionsearchbar {
+    padding: 0px;
+    padding-top: 5px;
+  }
+
+
+
+  .price{
+    font-size: 17px;
+    font-weight: 700;
+    margin-right: 12px;
+    margin-bottom: 5px;
+    display: inline-block;
+    margin-left: 5%;
+  }
+
+  .original-price {
+    font-size: 15px;
+    color: #94969f;
+    margin-right: 12px;
+    text-decoration: line-through;
+    display: inline-block;
+  }
+
+  .discounted-offer {
+    font-size: 15px;
+    font-weight: 700;
+    color: #ff5a5a;
+    display: inline-block;
+  }
+
+  .pdp-main-container .ctn-top-border {
+    border-top: 1px solid #eaeaec;
+  }
+
+  .pdp-main-container .card-header {
+    margin-bottom: 20px;
+    position: relative;
+  }
+
+  .grid {
+    background: #fff;
+    margin: 0 0 16px 0;
+  }
+
+  .padding-md-left {
+    padding-left: 18px!important;
+  }
+  .padding-md-right {
+    padding-right: 18px!important;
+  }
+  .padding-md-top {
+    padding-top: 18px!important;
+  }
+  .padding-md-bottom {
+    padding-bottom: 18px!important;
+  }
+
+  .col-2-3 {
+    width: 66.66%;
+  }
+  [class*=col-] {
+    float: left;
+    padding-right: 16px;
+  }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+
+  .sliderImage{
+    height: 50%;
+    width: 50%;
+  }
+
+  .product-sizes-container .sizes-list-ctn {
+    overflow: hidden;
+  }
+
+  .product-sizes-container .sizes-list {
+    padding-top: 0;
+    margin: 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    display: block;
+  }
+
+  .ripple-container {
+    position: relative;
+    overflow: hidden;
+    margin-top: 10px;
+  }
+
+  .product-sizes-container .size-btn {
+    min-width: 50px;
+    height: 50px;
+    border-radius: 50px;
+    font-weight: 400;
+    color: #535766 !important;
+    border-color: #535766;
+    position: relative;
+    border: 1px solid #535766 ;
+  }
+  .btn.outline {
+    background-color: #fff;
+  }
+
+  .list-inline {
+    padding-left: 0;
+    list-style: none;
+    margin-left: 0;
+  }
+
+  .ripple-container .ripple {
+    position: absolute;
+    border-radius: 50%;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+
+  .product-sizes-container .size-btn.selected {
+    font-weight: 500;
+    border: solid 1px #535766;
+    background-color: #535766;
+    color: #ffffff !important;
+  }
+
+  .list-inline>li {
+    display: inline-block;
+    padding-left: 0;
+    padding-right: 10px;
+  }
+
+  .product-sizes-container .recoContainer {
+    position: relative;
+    overflow: hidden;
+    padding: 0 18px 18px;
+  }
+
+  .product-sizes-container .recText {
+    display: inline-block;
+    font-size: 13px;
+    color: #3e4152;
+  }
+
+  .grid {
+    background: #fff;
+    margin: 0 0 16px 0;
+  }
+
+  .pdp-actions-container .width-60 {
+    float: left;
+    width: 60%;
+  }
+
+  .pdp-actions-container .full-width {
+    width: 100%;
+  }
+
+  .btn [class*=" icon-"], .btn [class^=icon-] {
+    font-size: 18px;
+    margin-right: 14px;
+    vertical-align: text-bottom;
+  }
+
+
+  .btn.primary {
+    color: white;
+    background-color: #ED3237;
+    border-color: #e07917;
+  }
+  .btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    outline: 0;
+    padding: 10px 12px;
+    font-size: 13px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+
+  .outOfStockDetails
+  {
+    max-width: 45%;
+    margin-top: -5%;
+  }
+
+
+
+  .item_image {
+    padding-bottom: -100px;
+  }
+
+  .ionrow {
+     width: 90%;
+    margin-left: 5%;
+    margin-top: 75px;
+  }
+
+  ion-searchbar{
+    input::placeholder {
+      color:darkblue!important;
+    }
+    padding: 0px;
+    padding-top: 5px;
+  }
+
+
+  .new-background-color{
+    --background: #ED3237;
+    color: white;
+  }
+  .headName {
+    font-size: small;
+  }
+
+  .colPadding
+  {
+    padding: 3px;
+  }
+  .itemCountCart {
+    margin-top: -35%
+  }
+  .rowclass {
+    margin-top: -12px;
+    background: #ED3237;
+  }

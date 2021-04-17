@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-toolbar color="secondary">
+    <!--<ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+      &lt;!&ndash;
+            <ion-icon name="menu"></ion-icon>
+      &ndash;&gt;
+    </ion-buttons>-->
+    <ion-buttons slot="start">
+
+      <!--
+                      <ion-back-button class="ionbackbutton" ></ion-back-button>
+      -->
+      <ion-back-button class="ionbackbutton" defaultHref="home"></ion-back-button>  <!--;page=itemList-->
+
+    </ion-buttons>
+
+    <ion-title>BHIKARAM UDYOG</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content color="">
+
+  <div align="center">
+  <ion-tabs>
+
+
+    <ion-tab-bar slot="top" color="secondary" >
+      <ion-tab-button tab="tab-order-list">
+        <ion-label>ALL</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="pending-orders">
+        <ion-label>PENDING</ion-label>
+      </ion-tab-button>
+
+      <ion-tab-button tab="tab-order-compelete">
+        <ion-label>COMPLETED</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+
+  </ion-tabs>
+  </div>
+
+</ion-content>

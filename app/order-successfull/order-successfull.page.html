@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start" >
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Confirmation</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <div align="center">
+
+  <img src="assets/imgs/tick.png" class="succesfull_Order" style="align-items: center;" >
+
+  </div>
+
+  <div align="center" style="margin-top: 5px" *ngIf="pageName == 'pendingOrder'">
+    <h4><b>Your order is Successfully updated.</b></h4>
+  </div>
+
+  <div align="center" style="margin-top: 5px" *ngIf="pageName == 'itemList'">
+    <h4><b>Your order is Successfully placed.</b></h4>
+  </div>
+
+  <div align="center">
+    <h5 style="color: grey">Order No : {{orderNo}}</h5>
+  </div>
+
+  <div align="center">
+    <h5 style="color: grey">Order Date : {{orderDate | date: 'dd/MM/yyyy'}}</h5>
+  </div>
+
+</ion-content>
+
+<ion-footer>
+  <button padding class="btnHOme" (click)="goToHome()">BACK TO HOME</button>
+</ion-footer>

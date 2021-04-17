@@ -1,0 +1,67 @@
+
+<ion-header>
+
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+<!--
+      <ion-icon name="menu"></ion-icon>
+-->
+    </ion-buttons>
+    <ion-title>Invite Friends</ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <p class="para">
+
+    If you have enjoyed our services, please spread the word amongst your friends. We are eternally grateful for your patronage and support.
+
+  </p>
+  <div >
+    <ion-row>
+
+      <!--<ion-fab center style="margin-left: -39px;">
+      <button ion-fab large (click)="sendSMS()"><img src="assets/imgs/ic_sms.png" style="max-width: 57%;"/></button>
+      <h5 class="heading">SMS</h5>
+      </ion-fab><br/>-->
+    </ion-row>
+    <ion-row>
+
+      <ion-fab horizontal="left" style="left: 22px;">
+        <ion-fab-button  color="white"  class="sms_largee" (click)="shareSheetShare()"><img src="assets/imgs/watsapp_icon.png"/></ion-fab-button>
+        <h6 class="heading1">WHATSAPP</h6>
+      </ion-fab>
+      <ion-fab right style="right: 37px;">
+<!--
+        <button ion-fab sms_large ><img src="assets/imgs/ic_email.png"/></button>
+-->
+        <ion-fab-button  color="white" class="sms_largee" (click)="sendEmail()"><img src="assets/imgs/ic_email.png"/></ion-fab-button>
+        <h6 class="heading2">EMAIL</h6>
+      </ion-fab>
+    </ion-row>
+
+  </div>
+
+
+
+
+
+
+  <ion-footer class="footer">
+
+    <p class="para">
+      Check out  "{{cName}}" <br>
+      <a style="color: dodgerblue;font-size: 17.5px;">https://tabserp.com/Home/DownloadApp<br></a>
+      Register app using my Referral Code : {{referralCode}} to avail benefits.
+    </p>
+<!--
+    <a>https://play.google.com/store/apps/details?id=io.ionic.starter.capitalSuperStore</a>
+-->
+
+
+  </ion-footer>
+</ion-content>
+

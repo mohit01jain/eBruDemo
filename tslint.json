@@ -1,0 +1,57 @@
+{
+  "extends": "../tslint.json",
+  "rules": {
+    "directive-selector": [
+      true,
+      "attribute",
+      "app",
+      "camelCase"
+    ],
+    "component-selector": [
+      true,
+      "element",
+      "app",
+      "page",
+      "kebab-case"
+    ],
+    "no-shadowed-variable": [
+      true,
+      {
+        "class": true,
+        "enum": true,
+        "function": true,
+        "interface": false,
+        "namespace": true,
+        "typeAlias": false,
+        "typeParameter": false
+      }
+    ]
+  },
+  "whitespace": [true, "check-branch", "check-operator", "check-typecast"],
+  "no-shadowed-variable": [
+    true,
+    {
+      "class": true,
+      "enum": true,
+      "function": true,
+      "interface": false,
+      "namespace": true,
+      "typeAlias": false,
+      "typeParameter": false,
+      "underscore": false
+    }
+  ],
+  "triple-equals": [true, "allow-null-check",  {
+    "type": "array",
+    "items": {
+      "type": "string",
+      "enum": [
+        "allow-null-check",
+        "allow-undefined-check"
+      ]
+    },
+    "minLength": 0,
+    "maxLength": 2
+  }]
+
+}

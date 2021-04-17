@@ -1,0 +1,104 @@
+<ion-header>
+
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+      <ion-back-button class="ionbackbutton" defaultHref="HomepagePage"></ion-back-button>
+    </ion-buttons>
+    <!--<img src="assets/icon/RajdhaniLOGO.PNG" style="width: 50px;height: 50px;float: left; border-radius: 10%">-->
+    <ion-title align="center" margin-top style="font-size: medium;" ><span>Receivable</span></ion-title>
+
+
+    <ion-buttons slot="end">
+      <ion-button icon-only style="margin-right: 5px">
+        <ion-icon style="color: white" name="swap"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button icon-only style="margin-right: 5px">
+        <ion-icon style="color: white"> <img src="assets/icon/ios-share-outline.png" /></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content (scroll)="getScrollPosition()">
+  <ion-row padding style="background-color: #007069;">
+    <ion-col col-7 size="7" align="left">
+      <span class="totalRecvableAmnt">
+        Total Receivable Amount :
+      </span>
+    </ion-col>
+
+    <ion-col col-5 size="5" >
+      <span style="color:white;font-size: 14px;align:right ">
+    <b> {{totalRecAmount | number :'1.2-2'}} Dr</b>
+  </span>
+    </ion-col>
+
+  </ion-row>
+
+
+  <ion-row style="background-color: #007069;">
+    <ion-col col-3 size="3">
+      <span class="totalRecvableAmnt">
+        Due Amt :
+      </span>
+    </ion-col>
+    <ion-col align="left" col-3 size="3">
+      <span style="color:white;font-size: 14px">
+    <b>{{dueAmount | number :'1.2-2'}}</b>
+  </span>
+    </ion-col>
+
+    <ion-col col-3 size="3">
+      <span class="totalRecvableAmnt">
+        O/s but not Due:
+      </span>
+    </ion-col>
+    <ion-col align="left" col-3 size="3">
+      <span style="color:white;font-size: 14px">
+    <b>{{notDue | number :'1.2-2'}}</b>
+  </span>
+    </ion-col>
+  </ion-row>
+
+  <div style="text-align: center;background-color: #007069">
+    <ion-searchbar placeholder="Search By Account Name" (ionInput)="getAccount($event)" >
+
+    </ion-searchbar>
+  </div>
+
+  <ion-list #pageTop >
+    <ion-item *ngFor="let data of arapModelList; let i = index" (click) ="AccountDetail(data)">
+      <ion-row>
+        <ion-col col-9 size="9" float-left text-wrap>
+          <span><b>{{data.AcntName}}</b></span>
+        </ion-col>
+        <ion-col col-3 size="3" float-right>
+          <span><b>{{data.ArapAmt | number :'1.2-2'}}</b></span>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <span style="color:#aaaaaa;">Avg Payment Days : {{data.AvgDays}}</span>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+  <ion-fab bottom right >
+    <ion-fab-button color="primary" (click)="scrollToTop()" *ngIf="visible == true">
+      <ion-icon name="arrow-up"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+<!--
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content>
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+-->
+</ion-content>
+

@@ -1,0 +1,160 @@
+.col-md-6
+{
+
+}
+
+
+.headclass {
+  color: #ffffff;
+  font-size: small;
+  text-align: -moz-left;
+}
+
+.iconclass {
+  margin-right: 20px;
+}
+
+.OrderItemCount {
+  z-index: 999;
+  /* position: absolute; */
+  margin-top: inherit;
+  margin-right: 3px;
+  margin-left: -13px;
+  margin-bottom: 6px;
+  margin-top: -4px;
+  background-color: darkslateblue;
+  color: white;
+  padding: 1px;
+  font-size: 13px;
+  border: white solid 1px;
+}
+
+.rowclass {
+  margin-top: -12px;
+  background: #ED3237;
+}
+
+.circle-pic {
+  width: 45px;
+  height: 45px;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.accordion-list {
+  font-size: small;
+  height: 40%;
+  background: #ffffff;
+  margin-top: -25px;
+  padding-bottom: 0px;
+}
+
+.child {
+  background: #f3f2f1;
+  color: #000;
+  font-size: 15px;
+  font-family: Calibri;
+
+}
+
+.iontoolbar {
+  height: 35px;
+}
+
+.ionbackbutton {
+  color: white
+}
+
+.imageicon {
+  height: 20px;
+  width: 100px;
+}
+
+
+.ionsearchbar {
+  padding: 0px;
+  padding-top: 5px;
+}
+
+.ionrow {
+  height: 45%;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 75px;
+}
+
+.ionlistheader {
+  margin-bottom: 4px;
+}
+
+.rowclass1 {
+  background: white;
+  alignment: center;
+}
+
+.iontextclass {
+  align-items: center;
+}
+
+.ioncolclass {
+  color: #1e2023;
+}
+
+.ionlist {
+  margin-bottom: 2px;
+}
+
+.arrowforward {
+  height: 30px;
+  width: 30px;
+}
+
+.buttonclass2 {
+  background-color: transparent;
+  width: 100%;
+}
+
+.item_image {
+  padding-bottom: -100px;
+  width: 500px;
+}
+
+
+.textDisplaySection
+{
+  font-size: small;
+}
+
+ion-searchbar{
+  input::placeholder {
+    color:darkblue!important;
+  }
+  padding: 0px;
+  padding-top: 5px;
+}
+
+
+.new-background-color{
+  --background: #ED3237;
+  color: white;
+}
+.headName {
+  font-size: small;
+}
+
+/*.sliderImage{
+  height: 50%;
+  width: 50%;
+}*/
+
+.colPadding
+{
+  padding: 3px;
+}
+.itemCountCart {
+  margin-top: -35%
+}
+.rowclass {
+  margin-top: -12px;
+  background: #ED3237;
+}

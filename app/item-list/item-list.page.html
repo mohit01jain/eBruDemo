@@ -1,0 +1,166 @@
+<ion-app>
+    <ion-header class="new-background-color">
+        <ion-toolbar color="secondary">
+            <ion-buttons slot="start">
+
+                <!--
+                                <ion-back-button class="ionbackbutton" ></ion-back-button>
+                -->
+                <ion-back-button class="ionbackbutton" defaultHref="HomepagePage"></ion-back-button>  <!--;page=itemList-->
+
+            </ion-buttons>
+            <ion-title class="headName"><b>{{companyName}}</b></ion-title>
+
+            <ion-buttons slot="primary">
+                <ion-button  >
+                    <p *ngIf="totalAmount > 0"> <b>{{totalAmount | currency:'INR':true:'1.0'}}</b></p>
+                </ion-button>
+            </ion-buttons>
+
+            <ion-buttons slot="primary">
+                <ion-button   (click)="gotoCartPage()" >
+                    <ion-icon name="cart"></ion-icon>
+                    <ion-badge *ngIf="itemCount > 0" slot="end" class="itemCountCart">{{itemCount}}</ion-badge>
+                </ion-button>
+            </ion-buttons>
+
+        </ion-toolbar>
+        <ion-row class="rowclass" [ngStyle]="{'background-color':'#ED3237'}" >
+            <ion-col class="colPadding" [style.col]="spinner == false ? 'col-11' : 'col-12'" >
+                <ion-searchbar
+                        (ionInput)="getItems($event)" animated="true"   autocomplete="on" (click)="openSearchPage()">
+                </ion-searchbar>
+            </ion-col>
+            <ion-spinner *ngIf="spinner == true"   name="ios"></ion-spinner>
+        </ion-row>
+
+    </ion-header>
+
+    <ion-content class="homeContent">
+        <ion-grid>
+
+            <ion-row *ngIf="itemFound == false" style="margin-top: 50%">
+                <ion-col text-wrap align="center">
+                    <h1 style="color: lightgrey">No items Available</h1>
+                </ion-col>
+
+            </ion-row>
+            <ion-row *ngIf="itemFound == true">
+
+
+
+                <ion-col col-6 *ngFor="let data of ItemList; let i = index"  size="6" sizeXl="2" sizeLg="3" sizeMd="4" class="listDiv">
+                    <div *ngFor="let item of data.ItemPackagingList">
+                        <ion-row>
+                            <ion-col align="center">
+
+                                <img class="item_image" *ngIf="item.ItemImageList[0].ImageUrl != ''"
+                                     src="https://api.tabserp.com/{{item.ItemImageList[0].ImageUrl}}" (click)="openItemDetail(data,i)">
+                                <img class="item_image" *ngIf="item.ItemImageList[0].ImageUrl == ''" src="assets/imgs/imageNotFound.jpg"
+                                     (click)="openItemDetail(data,i)">
+                                <!--            <img class="item_image" *ngIf="item.ItemImageList  ==  0" src="assets/imgs/imageNotFound.jpg" (click)="openItemDetail(data,i)">-->
+
+                            </ion-col>
+                        </ion-row>
+                        <ion-row>
+                            <span><br></span>
+                        </ion-row>
+                        <ion-row>
+                            <span class="itemName">{{data.Name}}</span>
+                        </ion-row>
+
+
+                        <ion-row>
+                            <!--          <p><span style="color: #c5c5c5;margin-left: 1px">&#8377;</span><span-->
+                            <!--            style="font-weight: bold;font-size: small">{{item.OurRate}}</span></p>-->
+                            <!--          &nbsp;&nbsp;<p style='text-decoration:line-through;color: red;' *ngIf="item.MRPRate > item.OurRate">-->
+                            <!--          &#8377;<span style="font-size: small">{{item.MRPRate}}</span></p>-->
+                            <!--        -->
+                            <ion-col col-6 size="6">
+                                <span class="ourRate">&#8377;<b>{{item.OurRate}}</b></span>
+                            </ion-col>
+                            <ion-col col-6 size="6" *ngIf="item.MRPRate > item.OurRate">
+                                <span class="mrpText">MRP:</span> <span class="mrpRate"><b>{{item.MRPRate}}</b></span>
+                            </ion-col>
+
+
+                        </ion-row>
+                        <ion-row class="off" *ngIf="item.MRPRate > item.OurRate">
+                            ({{((item.MRPRate - item.OurRate) / item.MRPRate) * 100 | number :'1.2-2'}}% OFF)
+                        </ion-row>
+                        <!-- <ion-row class="addBasket" *ngIf="item.Quantity == 0 && item.ClosingStock >= 1">-->
+                        <ion-row class="addBasket" *ngIf=" item.Quantity == 0 && item.ClosingStock >= 1">
+                            <ion-col align="center">
+                                <img src="assets/imgs/btn_addToBasket.PNG" style="max-width: 79%;" (click)="addToCart(data)">
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row class="addBasket" *ngIf="IsNegativeStockAllowed == false && item.ClosingStock < 1 ">
+                            <ion-col align="center">
+                                <img src="assets/imgs/btn_out_stock_en.png" style="max-width: 79%;">
+                            </ion-col>
+                        </ion-row>
+
+                        <!--        <ion-row *ngIf="item.ClosingStock < 1" style="margin-top: -11px;">-->
+                        <!--          <ion-col align="center">-->
+                        <!--            <img src="assets/imgs/btn_out_stock_en.png" style="max-width: 79%;">-->
+                        <!--          </ion-col>-->
+                        <!--        </ion-row>-->
+
+
+                        <ion-row *ngIf="item.Quantity > 0" style="margin-top: 2%;">
+                            <ion-col col-2 size="2" align="center">
+                                <img style="width: 100%;height: 100%;" src="assets/icon/negative-sign-inside-circle-less.png"
+                                     (click)="increment(i,item.SaleRate,data, -1)">
+                            </ion-col>
+
+                            <ion-col col-4 size="4" align="center">
+                                <input type="tel" maxlength="3" class="quantText" [(ngModel)]="item.Quantity"
+                                       (blur)="updateQuantity(item.Quantity,i,data)" disabled>
+                            </ion-col>
+                            <ion-col col-2 size="2" align="center">
+                                <img style="width: 100%;height: 100%;" src="assets/icon/plus-button-icon.png"
+                                     (click)="increment(i,item.SaleRate,data, 1)">
+                            </ion-col>
+                            <ion-col col-4 size="4" align="center" class="QtyRowRE" (click)="increment(i,item.SaleRate,data, 0)"><span><b>Reset</b></span>
+
+                            </ion-col>
+                        </ion-row>
+                        <ion-row *ngIf="item.Quantity > 0">
+
+
+                            <ion-col align="center" class="QtyRow" col-2 size="2" (click)="increment(i,item.SaleRate,data, 10)">
+                                <span><b>+10</b></span></ion-col>
+                            <ion-col align="center" class="QtyRow100" col-3 size="3" (click)="increment(i,item.SaleRate,data, 100)">
+                                <span><b>+100</b></span></ion-col>
+                            <ion-col align="center" class="QtyRow500" col-3 size="3" (click)="increment(i,item.SaleRate,data, 500)">
+                                <span><b>+500</b></span></ion-col>
+                            <ion-col align="center" class="QtyRow1000" col-3 size="3" (click)="increment(i,item.SaleRate,data, 1000)">
+                                <span><b>+1000</b></span></ion-col>
+
+
+                        </ion-row>
+                        <ion-row *ngIf="item.Quantity > item.ClosingStock && item.ClosingStock > 0">
+                            <ion-col col-12 size="12">
+                                <span class="maxQty">Max Qty Possible : {{item.ClosingStock}}</span>
+                            </ion-col>
+                        </ion-row>
+
+                    </div>
+                </ion-col>
+
+
+
+
+
+
+
+
+
+            </ion-row>
+        </ion-grid>
+
+
+    </ion-content>
+</ion-app>
+

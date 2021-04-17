@@ -1,0 +1,127 @@
+<ion-app>
+
+    <ion-header>
+        <ion-toolbar align="center" color="secondary">
+
+            <ion-label style="font-size: 20.5px;"> New Address</ion-label>
+        </ion-toolbar>
+
+    </ion-header>
+    <ion-content padding>
+
+        <ion-item>
+            <ion-label position="floating">Name <span style="color:red;">*</span></ion-label>
+
+            <ion-input type="text" [(ngModel)]="newAddData.name" pattern="name" required>
+
+            </ion-input>
+        </ion-item>
+        <div *ngIf="nameError == false" class="error" padding-left>
+            Name field can not be empty.
+        </div>
+
+        <ion-item style="margin-top: 10px; ">
+            <ion-label position="floating">Mobile No. <span style="color:red;">*</span></ion-label>
+
+
+            <ion-input type="tel" pattern="Mobile" [(ngModel)]="newAddData.contact_no" maxlength="10"
+                       required></ion-input>
+        </ion-item>
+        <div *ngIf="contact_noError == false" class="error" padding-left>
+            Contact No field can not be empty.
+        </div>
+
+        <ion-item style="margin-top: 10px; ">
+            <ion-label position="floating">Address-1 <span style="color:red;">*</span></ion-label>
+
+            <ion-input type="text" [(ngModel)]="newAddData.address1" pattern="Address" required></ion-input>
+
+        </ion-item>
+        <div *ngIf="address1Error == false" class="error" padding-left>
+            Address1 field can not be empty.
+        </div>
+
+        <ion-item style="margin-top: 10px; ">
+            <ion-label position="floating">Address-2</ion-label>
+
+            <ion-input type="text" [(ngModel)]="address2" pattern="Address"></ion-input>
+        </ion-item>
+
+        <ion-item style="margin-top: 10px; ">
+            <ion-label position="floating">Address-3</ion-label>
+
+            <ion-input type="text" [(ngModel)]="address3"></ion-input>
+        </ion-item>
+
+        <ion-item style=" margin-top: 20px;">
+
+            <ion-label position="floating">State <span style="color:red;">*</span></ion-label>
+
+            <ion-select [(ngModel)]="list" style="max-width: 100%;" required (ionChange)="onChange(list)">
+                <ion-select-option value="{{i}}" *ngFor="let list of stateList; let i = index">
+                    {{list.Text}}
+                </ion-select-option>
+
+
+            </ion-select>
+
+        </ion-item>
+        <div *ngIf="stateListError == false" class="error" padding-left>
+            State field can not be empty.
+        </div>
+
+
+        <ion-item style="margin-top: 10px; ">
+            <ion-label position="floating">City/District/Town <span style="color:red;">*</span></ion-label>
+
+            <ion-input type="text" [(ngModel)]="newAddData.city" pattern="City" required></ion-input>
+
+
+        </ion-item>
+        <div *ngIf="cityError == false" class="error" padding-left>
+            city field can not be empty.
+        </div>
+
+
+        <ion-item style="margin-top: 10px; ">
+            <ion-label position="floating">Pincode <span style="color:red;">*</span></ion-label>
+
+            <ion-input type="tel" maxlength="6" [(ngModel)]="newAddData.pincode" pattern="Pincode" required></ion-input>
+
+        </ion-item>
+        <div *ngIf="pincodeError == false" class="error" padding-left>
+            pincode field can not be empty.
+        </div>
+
+
+        <ion-item style="margin-top: 10px; ">
+            <ion-label position="floating">Alternate Mobile No.</ion-label>
+
+            <ion-input type="tel" [(ngModel)]="alt_contact_no" maxlength="10"></ion-input>
+        </ion-item>
+
+
+        <label style="color: #f53d3d;font-size:15px;">* indicate mandatory Fields</label>
+
+
+        <ion-row style="background-color: #ED3237;margin-top: 10%">
+            <ion-col size="6" style="border: solid 1px white;">
+                <ion-buttons>
+                    <button padding style="background-color: #ED3237;    line-height: 1;color: white;padding-left: 48px;"
+                            (click)="popupcancel()"> CANCEL
+                    </button>
+                </ion-buttons>
+            </ion-col>
+
+            <ion-col size="6" style="border: solid 1px white;" >
+                <ion-buttons>
+                    <button padding style="background-color: #ED3237; color:white;  line-height: 1; padding-left: 60px;" (click)="submitData()">
+                        OK
+                    </button>
+                </ion-buttons>
+            </ion-col>
+
+        </ion-row>
+    </ion-content>
+
+</ion-app>

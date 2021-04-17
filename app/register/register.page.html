@@ -1,0 +1,500 @@
+<ion-header>
+  <ion-toolbar color="secondary" class="iontoolbar1">
+
+
+    <ion-buttons slot="start">
+
+      <ion-back-button class="ionbackbutton" defaultHref="HomepagePage"></ion-back-button>
+
+
+    </ion-buttons>
+
+    <ion-title class="headclass" style="font-size: 15px"><b> Create an Account</b></ion-title>
+
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div align="center">
+    <img class="imageSignUp" src="assets/imgs/ic_sign_in.png">
+  </div>
+
+
+  <form *ngIf="emailIDVisible == false">
+
+    <ion-row class="inputAllItme" *ngIf="visible == true">
+      <ion-col col-12>
+        <ion-select class="inputAllItme"  [(ngModel)]="selectBranch" name="selectBranch"  placeholder="Select Branch">
+          <ion-select-option *ngFor="let list of branchList; let i = index" >
+            {{list.CompanyName}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-item margin-left="17px">
+      <ion-label class="lb_deliver"  (click)="MapAddress()"><b>+ Select Address on Map</b></ion-label>
+    </ion-item>
+
+    <ion-item margin-left="17px">
+      <ion-label position="floating" class="registerpageitems">Name<span class="span" > &nbsp;*</span></ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.name" pattern="Name" required ></ion-input>
+
+    </ion-item>
+    <div *ngIf="nameError == false" class="error"  padding-left>
+      Name field can not be empty.
+    </div>
+
+    <ion-item>
+      <ion-label position="floating" class="registerpageitems">Address 1<span class="span">&nbsp;*</span></ion-label>
+
+      <ion-input type="text"  name="name"  [(ngModel)]="registerData.userAddress1" pattern="Name" required ></ion-input>
+
+      <!--registerData.userAddress2-->
+
+    </ion-item>
+    <div *ngIf="add1Error == false" class="error" padding-left>
+      Address can not be empty.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating" class="registerpageitems">Address 2 </ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.userAddress2" pattern="Name" ></ion-input>
+
+    </ion-item>
+
+
+
+    <ion-item style=" margin-top: 20px;">
+
+      <ion-label position="floating">State <span style="color:red;">*</span></ion-label>
+
+      <ion-select  name="name" [(ngModel)]="list" style="max-width: 100%;" required (ionChange)="onChange(list)">
+        <ion-select-option value="{{i}}" *ngFor="let list of stateList; let i = index">
+          {{list.Text}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!--<ion-item style="margin-top: 10px;">
+
+      <ion-label position="floating">State <span style="color:red;">*</span></ion-label>
+      <ion-select [(ngModel)]="list" style="max-width: 100%;">
+        <ion-select-option *ngFor="let list of stateList; let i = index"
+                           [value]="list"
+                           [selected]="list.FieldCodeId == data.State" (ionSelect)="onChange(list)">
+          {{list.Text}}
+        </ion-select-option>
+
+      </ion-select>
+    </ion-item>-->
+
+    <ion-item>
+      <ion-label position="floating" class="registerpageitems">City<span class="span">&nbsp;*</span></ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.userCity" pattern="Name" required ></ion-input>
+
+    </ion-item>
+    <div *ngIf="cityError == false" class="error" padding-left>
+      City can not be empty.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating" class="registerpageitems">FSS Lic No.<span class="span">&nbsp;</span></ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.fsslicno" pattern="Name" required  style="text-transform: uppercase;" autocapitalize="characters"></ion-input>
+
+    </ion-item>
+    <!--<div *ngIf="fssError == false" class="error" padding-left>
+      FSS Lic No. can not be empty.
+    </div>
+-->
+
+    <ion-item>
+      <ion-label position="floating" class="registerpageitems">GST No.<span class="span">&nbsp;</span></ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.gstno" pattern="Name" required  style="text-transform: uppercase;" autocapitalize="characters"></ion-input>
+
+    </ion-item>
+   <!-- <div *ngIf="gstError == false" class="error" padding-left>
+      GST No. can not be empty.
+    </div>-->
+
+
+    <ion-item>
+      <ion-label position="floating" class="registerpageitems">PAN No.<span class="span">&nbsp;</span></ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.panno" pattern="Name" required  style="text-transform: uppercase;" autocapitalize="characters"></ion-input>
+
+    </ion-item>
+    <!--<div *ngIf="panError == false" class="error" padding-left>
+      PAN No. can not be empty.
+    </div>-->
+
+
+
+    <ion-item>
+
+        <ion-label position="floating" margin-left="-10px;" class="registerpageitems" >Pincode<span class="span" >&nbsp;*</span></ion-label>
+        <ion-input type="tel" maxlength="6"  name="userMobile" [(ngModel)]="registerData.userPincode" pattern="Number" required ></ion-input>
+
+    </ion-item>
+
+
+    <!--    <ion-list>
+      <ion-item>
+        <ion-list-header >
+        <ion-label margin-left="-10px;" class="registerpageitems" >Pincode<span class="span" >&nbsp;*</span></ion-label>
+        </ion-list-header>
+
+
+        <ion-select [compareWith]="compareWith">
+          <ion-select-option *ngFor="let user of users">{{user.first + ' '}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-list>      -->
+
+
+    <div *ngIf="userPincodeError == false" class="error" padding-left>
+      Invalid Pincode.
+    </div>
+
+
+
+    <ion-item >
+      <ion-label position="floating"  class="registerpageitems"  >Mobile<span class="span" >&nbsp;*</span></ion-label>
+
+      <ion-input type="tel" maxlength="10"   name="userMobile" [(ngModel)]="registerData.userMobile" pattern="Mobile" required ></ion-input>
+
+    </ion-item>
+    <div *ngIf="userMobileError == false" class="error" padding-left>
+      Invalid Mobile Number.
+    </div>
+
+    <ion-item >
+      <ion-label position="floating"   class="registerpageitems">Email ID </ion-label>
+
+      <ion-input [(ngModel)]="registerData.userID" pattern="EmailID" name="userID" type="Email"  ></ion-input>
+
+    </ion-item>
+    <div *ngIf="emailIdError == false" class="error" padding-left>
+      EmailID field can not be empty.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating"  class="registerpageitems">Alternate Mobile No</ion-label>
+
+      <ion-input type="tel" maxlength="10"   name="userAltMobileNo" [(ngModel)]="registerData.userAltMobileNo"  pattern="Mobile"></ion-input>
+
+    </ion-item>
+
+
+    <!--<div class="container">
+      <div class="row">-->
+    <!--
+              <ion-content padding>
+    -->
+
+    <ion-item>
+      <!--
+                <div class="col-sm8">
+      -->
+
+      <ion-label position="floating"  class="registerpageitems">Password<span class="span" >*</span></ion-label>
+
+      <!--
+                </div>
+      -->
+      <!--
+                <div class="col-sm-4">
+      -->
+      <ion-input type="{{type}}" name="password" [(ngModel)]="registerData.userPassword" required="Password"> </ion-input>
+
+      <ion-button *ngIf="!showPass" class="button"  type="button" color="white" fill="false" (click)="showPassword()" margin-top  item-end="true" slot="end"
+              item-right="true"> <ion-icon    large name="eye-off"></ion-icon></ion-button>
+      <ion-button *ngIf="showPass" class="button"  type="button" color="white" fill="false" (click)="showPassword()" margin-top item-end="true" slot="end"
+              item-right="true"> <ion-icon   large name="eye"></ion-icon></ion-button>
+
+      <!--
+                </div>
+      -->
+    </ion-item>
+    <!--
+              </ion-content>
+    -->
+
+    <!--</div>
+  </div>-->
+
+    <div *ngIf="userPasswordError == false" class="error" padding-left>
+      Invalid Password.
+    </div>
+
+    <ion-item *ngIf="visiblity==true">
+      <ion-label position="floating"  class="registerpageitems" >Enter OTP<span class="span" >&nbsp;*</span></ion-label>
+
+      <ion-input type="tel" maxlength="4" name="OTP" [(ngModel)]="userOTP" (input)="checkForOTP()" ></ion-input>
+
+
+    </ion-item>
+    <div class="divclass" *ngIf="userOtpError == false" class="error" padding-left>
+     <!-- Invalid OTP.-->
+    </div>
+    <div *ngIf="userOtpError == true" class="error" padding-left>
+      <span class="userOtpError">Verified OTP</span>
+    </div>
+
+    <ion-row>
+      <ion-col col-10>
+        <ion-item>
+          <ion-label position="floating"  class="registerpageitems"  >Referral Code (Optional)</ion-label>
+
+          <ion-input
+                  name="userInviteCode" [(ngModel)]="registerData.userInviteCode" maxlength="5"></ion-input>
+
+        </ion-item>
+      </ion-col>
+      <ion-col col-2>
+
+        <img align="center" tooltip="1. Check Your Friends Profile or Check Referred Massage "
+
+        />
+
+
+      </ion-col>
+    </ion-row>
+
+    <span style="color: red;"> * indicate mandatory fields</span>
+    <p class="pClasse">By signing up you accept our <a class="pclasse2" >terms & conditions</a></p>
+
+
+
+    <ion-button
+            class="createAccout" *ngIf="visiblity==false" color="secondary"
+            style="color: #ffffff;"
+            type="submit"
+                (click)="sendOtp()"  expand="full"
+                size="small"  >Send OTP</ion-button>
+
+    <!--<button ion-button full class="createAccout" type="submit"  >Create Account</button>-->
+    <ion-button full class="createAccout" type="submit"*ngIf="visiblity==true" color="secondary" style="color: #ffffff;" (click)="userRegister()" >Create Account</ion-button>
+
+  </form>
+
+
+  <form *ngIf="emailIDVisible == true">
+
+
+    <ion-row class="inputAllItme" *ngIf="visible == true">
+      <ion-col col-12>
+        <ion-select class="inputAllItme2"   [(ngModel)]="selectBranch" name="selectBranch"  placeholder="Select Branch">
+          <ion-select-option *ngFor="let list of branchList; let i = index" >
+            {{list.CompanyName}}
+          </ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+
+
+    <ion-item >
+      <ion-label position="floating" class="registerpageitems">Name<span class="span"> &nbsp;*</span></ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.name1" pattern="Name" value="{{registerData.name1}}" required ></ion-input>
+
+    </ion-item>
+
+
+    <div *ngIf="nameError == false" class="error" padding-left>
+      Name field can not be empty.
+    </div>
+
+<!--
+    style="font-size: 13px;color: red;margin-left: 17px;"
+-->
+
+
+
+
+    <ion-item>
+      <ion-label position="floating"  class="registerpageitems" >Mobile No. </ion-label>
+
+      <ion-input [(ngModel)]="registerData.userMobile1" pattern="Mobile" class="inputitemclass" name="Mobile" type="tel" value="{{registerData.userMobile1}}" ></ion-input>
+
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label position="floating"  class="registerpageitems" >Email ID <span class="span" >&nbsp;</span> </ion-label>
+
+      <ion-input [(ngModel)]="registerData.userID1" margin-left="17px" pattern="EmailID" name="userID" type="Email" value="{{registerData.userID1}}" ></ion-input>
+
+    </ion-item>
+    <div *ngIf="emailIdError == false" class="error" padding-left>
+      Invalid EmailID.
+    </div>
+
+
+
+    <ion-item>
+      <ion-label position="floating">Address 1<span class="span" >&nbsp;*</span></ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.userAddress11" pattern="Name"  value="{{registerData.userAddress11}}" required></ion-input>
+
+    </ion-item>
+    <div *ngIf="add1Error == false" class="error" padding-left>
+      Address can not be empty.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">Address 2 </ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.userAddress21" pattern="Name" value="{{registerData.userAddress21}}" ></ion-input>
+
+    </ion-item>
+
+
+    <ion-item style=" margin-top: 20px;">
+
+      <ion-label position="floating">State<span style="color:red;">*</span></ion-label>
+
+      <ion-select   name="name" [(ngModel)]="list" style="max-width: 100%;" required (ionChange)="onChange(list)">
+        <ion-select-option value="{{i}}" *ngFor="let list of stateList; let i = index">
+          {{list.Text}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+   <!-- <ion-item style="margin-top: 10px;">
+
+      <ion-label position="floating">State <span style="color:red;">*</span></ion-label>
+      <ion-select [(ngModel)]="list" style="max-width: 100%;">
+        <ion-select-option *ngFor="let list of stateList; let i = index"
+                           [value]="list"
+                           [selected]="list.FieldCodeId == data.State" (ionSelect)="onChange(list)">
+          {{list.Text}}
+        </ion-select-option>
+
+      </ion-select>
+    </ion-item>-->
+
+
+    <ion-item>
+
+      <ion-label position="floating">City<span class="span" >&nbsp;*</span></ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.userCity1" pattern="Name"  value="{{registerData.userCity1}}" required></ion-input>
+
+    </ion-item>
+    <div *ngIf="cityError == false" class="error" padding-left>
+      City can not be empty.
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Fss Lic. No.<span class="span" >&nbsp;</span></ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.fsslicno" pattern="Name"  value="{{registerData.fsslicno1}}" required  style="text-transform: uppercase;" autocapitalize="characters"></ion-input>
+
+    </ion-item>
+    <div *ngIf="fssError == false" class="error" padding-left>
+      Fss Lic. No. can not be empty.
+    </div>
+
+
+    <ion-item>
+      <ion-label position="floating">GST No.<span class="span" >&nbsp;</span></ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.gstno" pattern="Name"  value="{{registerData.gstno1}}" required  style="text-transform: uppercase;" autocapitalize="characters"></ion-input>
+
+    </ion-item>
+    <div *ngIf="gstError == false" class="error" padding-left>
+      GST No. can not be empty.
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">PAN No.<span class="span" >&nbsp;</span></ion-label>
+
+      <ion-input type="text"  name="name" [(ngModel)]="registerData.panno" pattern="Name"  value="{{registerData.panno1}}" required  style="text-transform: uppercase;" autocapitalize="characters"></ion-input>
+
+    </ion-item>
+    <div *ngIf="gstError == false" class="error" padding-left>
+      PAN No. can not be empty.
+    </div>
+
+
+    <ion-item>
+
+      <ion-label >Pincode<span class="span">&nbsp;*</span></ion-label>
+      <ion-input type="tel" maxlength="5"  name="userMobile" [(ngModel)]="registerData.userPincode1" pattern="Number"  value="{{registerData.userPincode1}}" required></ion-input>
+
+    </ion-item>
+
+
+    <div *ngIf="userPincodeError == false" class="error" padding-left>
+      Invalid Pincode.
+    </div>
+
+
+
+    <ion-item>
+      <ion-label position="floating"  class="registerpageitems" >Password </ion-label>
+
+      <ion-input  type="{{type}}" name="password" [(ngModel)]="registerData.userPassword1"  pattern="Password" value="{{registerData.userPassword1}}" required></ion-input>
+
+
+      <ion-button *ngIf="!showPass" clear color="dark" type="button" item-right (click)="showPassword()" margin-top> <ion-icon   large name="eye-off"></ion-icon></ion-button>
+      <ion-button *ngIf="showPass"  clear color="dark" type="button" item-right (click)="showPassword()" margin-top> <ion-icon   large name="eye"></ion-icon></ion-button>
+
+    </ion-item>
+
+
+
+    <div *ngIf="userPasswordError == false" class="error" padding-left>
+      Invalid Password.
+    </div>
+
+    <ion-item *ngIf="visiblity==true">
+      <ion-label position="floating">Enter OTP<span class="span">&nbsp;*</span></ion-label>
+
+      <ion-input type="tel" maxlength="4" name="OTP" [(ngModel)]="otp1" (input)="checkForOTP()" value="{{ otp1}}" ></ion-input>
+
+
+    </ion-item>
+    <div class="divclass"  *ngIf="userOtpError == false" class="error" padding-left>
+
+    </div>
+    <div *ngIf="userOtpError == true" class="error" padding-left>
+      <span class="userOtpError;">Verified OTP</span>
+    </div>
+
+
+
+    <ion-item>
+      <ion-label position="floating"  class="registerpageitems">Referral Code (Optional)</ion-label>
+
+      <ion-input   name="userInviteCode" [(ngModel)]="registerData.userInviteCode" maxlength="5"></ion-input>
+      <img  item-right src="assets/imgs/ic_info28.png"/>
+
+    </ion-item>
+    <span style="stcolor: red;"> * indicate mandatory fields</span>
+    <p class="pClasse">By signing up you accept our <a class="pclasse2" >terms & conditions</a></p>
+
+
+
+    <ion-button  class="createAccout" *ngIf="visiblity==false" type="submit" color="secondary" style="color: #ffffff;"  (click)="sendCODE()"   >Send CODE</ion-button>
+
+    <ion-button  class="createAccout" type="submit" *ngIf="visiblity==true" color="secondary" style="color: #ffffff;" (click)="userRegisterEmail()" >Create Account</ion-button>
+
+
+
+  </form>
+
+</ion-content>

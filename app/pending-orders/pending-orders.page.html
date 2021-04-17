@@ -1,0 +1,97 @@
+
+<ion-content padding style="background-color: lightgray;" (swipe)="swipeService.swipe($event,1)"  >
+
+  <div padding style="background-color: lightgray;alignment: center"  align="center">
+    <div align="center">
+    <ion-row>
+      <ion-radio-group style="background-color: lightgray" float="center" align="center" >
+      <ion-col col-4 size="4">
+
+        <ion-radio value="All Pending" (ionSelect)="searchBy('All')" checked></ion-radio>
+        <ion-label style="font-size: small;">    All Pending</ion-label>
+      </ion-col>
+      <ion-col col-4 size="4">
+        <ion-radio value="Partially Pending"  (ionSelect)="searchBy('Partially Pending')" ></ion-radio>
+        <ion-label style="font-size: small;">   Partially Pending </ion-label>
+
+
+      </ion-col>
+      <ion-col col-4 size="4">
+        <ion-radio value="Fully Pending"  (ionSelect)="searchBy('Fully Pending')" ></ion-radio>
+        <ion-label style="font-size: small;">  Fully Pending </ion-label>
+
+
+      </ion-col>
+        </ion-radio-group>
+    </ion-row>
+      </div>
+  </div>
+  <ion-card class="pending_details" *ngFor="let data of ItemList; let i = index" (click)="updateOrder(data,data.OrderNo)">
+    <ion-row style="background-color:#aaaaaa;color: white;" *ngIf="userType == 2">
+      <ion-col align="center">
+        <span><b>{{data.PartyName}}</b></span>
+      </ion-col >
+    </ion-row>
+    <ion-row>
+      <ion-col class="heading_col" col-3 size="3">
+        Order No.
+      </ion-col>
+      <ion-col col-1 size="1"></ion-col>
+      <ion-col class="heading_col" col-4 size="4">
+        Order Date
+      </ion-col>
+      <ion-col col-1></ion-col>
+
+      <ion-col class="heading_col" col-3 size="3">
+        Amount
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="content_col" col-3 size="3">
+        {{data.DocumentNo}}
+      </ion-col>
+      <ion-col col-1></ion-col>
+      <ion-col class="content_col" col-4 size="4">
+        <span>{{data.ItrnDate | date: 'dd/MM/yyyy hh:mm:ss a'}}</span>
+        <!--{{data.OrderDate}}-->
+      </ion-col>
+      <ion-col col-1></ion-col>
+
+      <ion-col class="content_col" col-3 size="3">
+        &#8377;{{data.NetAmount | number :'1.2-2'}}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12 size="12" *ngIf="data.OrderStatus == 1">
+
+        <ion-buttons class="confirm_btn" style="background-color: orange;color: white;">
+          <ion-label style="margin:auto;">   <b>Fully pending</b></ion-label>
+        </ion-buttons>
+
+      </ion-col> <ion-col col-12 size="12" *ngIf="data.OrderStatus == 2">
+
+      <ion-buttons class="confirm_btn" style="background-color: lightgreen;color: white;">
+        <ion-label style="margin:auto;">   <b>Partially pending</b></ion-label>
+      </ion-buttons>
+
+    </ion-col>
+    </ion-row>
+
+    <!--<ion-row>-->
+    <!--<ion-col col-12 class="delivery_time">-->
+    <!--Delivery <span>{{data.OrderDeliveryDate | date: 'dd/MM/yyyy'}}</span> {{data.DeliveryTimeSlotDesc}}-->
+    <!--</ion-col>-->
+    <!--</ion-row>-->
+  </ion-card>
+  <hr/>
+
+ <!-- <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>-->
+
+</ion-content>

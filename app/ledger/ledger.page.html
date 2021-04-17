@@ -1,0 +1,109 @@
+<!--
+  Generated template for the LedgerPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+
+-->
+
+<ion-header>
+
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+
+      <ion-back-button class="ionbackbutton" defaultHref="HomepagePage"></ion-back-button>
+
+
+    </ion-buttons>
+
+    <ion-title  class="toolbar-title">{{partyName}}</ion-title>  <!--(click)="gotoSearchPage()"-->
+
+    <!--<ion-buttons slot="end" style="margin-bottom: 10px;" >
+      <ion-button icon-only style="margin-right: 5px;" >
+        <ion-icon name="ios-share-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>-->
+
+
+  </ion-toolbar>
+
+  <ion-row class="rowclass" [ngStyle]="{'background-color':'#ED3237'}" >
+    <ion-col class="colPadding" [style.col]="spinner == false ? 'col-11' : 'col-12'" >
+      <ion-searchbar style="height: 35px; margin-bottom: 15px;"
+              (ionInput)="getItems($event)" animated="true"   autocomplete="on" (click)="openSearchPage(pageIndex, pageSize, val)">
+      </ion-searchbar>
+    </ion-col>
+    <ion-spinner *ngIf="spinner == true"   name="ios"></ion-spinner>
+  </ion-row>
+
+
+  <ion-row>
+    <ion-col col-1 size="1" sizeXl="0.25" sizeLg="0.25" sizeMd="0.25" style="padding-left: 17px;margin-top: 12px;">
+      <ion-checkbox #checkbox color="dark" (click)="ZeroClosingBalanceAccounts()"></ion-checkbox>
+    </ion-col>
+    <ion-col col-11 size="11" sizeXl="11.75" sizeLg="11.75" sizeMd="11.75">
+      <p style="font-size: 15px; padding-top:-40px;  padding-left: 10px;" ><b>Show Zero Closing Balance Accounts</b></p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row style="background-color: #007069;height: 40px;color: white;font-size: small;" >
+    <ion-col col-4 size="4" style="font-size: 15px;margin-top: 5px;"float-left>
+     Account Name
+    </ion-col>
+    <ion-col col-2 size="2" style="margin-top: 5px;font-size: 12px;" float-right>
+      Opening Balance
+         </ion-col>
+    <ion-col col-2 size="2" style="margin-top: 5px;font-size: 12px;" float-right>
+      Total Dr
+    </ion-col>
+    <ion-col col-2 size="2" style="margin-top: 5px;font-size: 12px;" float-right>
+      Total Cr
+      </ion-col>
+    <ion-col col-2 size="2" style="margin-top: 5px;font-size: 12px;" float-right>
+      Closing Balance
+    </ion-col>
+
+  </ion-row>
+
+</ion-header>
+
+
+<ion-content>
+
+
+    <ion-card  *ngFor="let data of ledgerResultModel;let i=index" (click)="showDetails(data)" >
+      <ion-row style="font-size: small;" >
+        <ion-col col-4 size="4" float-left text-wrap>
+          {{data.AcntName}}        </ion-col>
+        <ion-col col-2 size="2" float-right style="color:black;">
+            <span> {{data.OpeningBalance | number :'1.2-2'}}</span>
+        </ion-col>
+        <ion-col col-2 size="2" float-right style="color: blue;font-size: 12px;">
+          <span> {{data.TotalDr | number :'2.2-2'}}</span>
+        </ion-col>
+        <ion-col col-2 size="2" float-right style="color: red;font-size: 12px;">
+          <span> {{data.TotalCr | number :'1.2-2'}}</span>
+        </ion-col>
+
+        <ion-col col-2 size="2" float-right style="color:#11db83;font-size: 12px;" >
+          <span> {{data.ClosingBalance | number :'1.2-2'}}</span>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+  <hr/>
+
+
+   <ion-infinite-scroll (ionInfinite)="doInfinite($event)">
+     <ion-infinite-scroll-content
+             loadingSpinner="bubbles"
+             loadingText="Loading more data...">
+     </ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+
+
+</ion-content>
+
+
+
+

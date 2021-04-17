@@ -1,0 +1,27 @@
+.header{
+  padding: 2%;
+  font-size: 20px;
+  background-color:#ED3237;
+  color: white;
+  text-align: center;
+}
+
+.headName {
+  font-size: medium;
+}
+
+.new-background-color {
+  --background: #ED3237;
+  color: white;
+}
+
+.footer{
+  text-align: right;
+  color: white;
+  height: 13%;
+  padding: 2%;
+  background-color: #ED3237;
+}
+ion-select{
+  max-width: 200% !important;
+}

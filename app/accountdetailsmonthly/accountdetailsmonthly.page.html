@@ -1,0 +1,84 @@
+<ion-header>
+
+  <ion-toolbar color="secondary">
+    <ion-buttons slot="start">
+
+      <ion-back-button class="ionbackbutton" defaultHref="HomepagePage"></ion-back-button>
+
+
+    </ion-buttons>
+
+    <ion-title  class="toolbar-title" style="font-size: 15px;">  {{AcntName1}}  </ion-title>
+
+
+    <ion-buttons slot="end" style="margin-bottom: 10px;" >
+      <ion-button icon-only style="margin-right: 5px;" >
+        <ion-icon name="ios-share-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
+  </ion-toolbar>
+
+
+  <ion-row>
+    <ion-col>
+      <ion-text input type="date">
+
+      </ion-text>
+
+    </ion-col>
+
+  </ion-row>
+
+
+  <ion-row style="background-color: #007069;height: 40px;color: white;font-size: small;" >
+    <ion-col col-4 size="2" style="font-size: 15px;margin-top: 5px;"float-left>
+      Month
+    </ion-col>
+    <ion-col col-2 size="2" style="margin-top: 5px;font-size: 12px;" float-right>
+      Debit Amount
+    </ion-col>
+    <ion-col col-2 size="2" style="margin-top: 5px;font-size: 12px;" float-right>
+      Credit Amount
+    </ion-col>
+    <ion-col col-2 size="2" style="margin-top: 5px;font-size: 12px;" float-right>
+      Closing Amount
+    </ion-col>
+
+
+
+  </ion-row>
+
+</ion-header>
+
+
+<ion-content >
+
+
+
+  <ion-card *ngFor="let data of ledgerResultModel;let i=index" (click)="showDetails(data)"  >
+    <ion-row style="font-size: small;" >
+
+      <ion-col col-2 size="2" float-right style="color:black;">
+        <span> {{data.Month}}</span>
+      </ion-col>
+      <ion-col col-2 size="2" float-right style="color:black;">
+        <span> {{data.DebitAmount}}</span>
+      </ion-col>
+      <ion-col col-2 size="2" float-right style="color:black;">
+        <span> {{data.CreditAmount}}</span>
+      </ion-col>
+      <ion-col col-2 size="2" float-right style="color:#11db83;" >
+        <span> {{data.ClosingAmount}}</span>
+      </ion-col>
+    </ion-row>
+
+  </ion-card>
+  <hr/>
+
+
+
+
+
+</ion-content>
